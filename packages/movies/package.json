@@ -1,0 +1,24 @@
+{
+    "name": "movies",
+    "version": "1.0.0",
+    "description": "contain all movie related data features",
+    "private": true,
+    "main": "./src/index.ts",
+    "type": "module",
+    "scripts": {
+        "test": "jest",
+        "lint": "eslint . --ext .ts"
+    },
+    "devDependencies": {
+        "@types/jest": "^29.5.3",
+        "@types/node": "^20.5.0",
+        "eslint-config-custom": "*",
+        "jest": "^29.6.2",
+        "tsconfig": "*"
+    },
+    "dependencies": {
+        "axios": "^1.4.0",
+        "ts-jest": "^29.1.1",
+        "typescript": "^5.1.6"
+    }
+}

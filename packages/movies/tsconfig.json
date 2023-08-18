@@ -1,0 +1,12 @@
+{
+    "extends": "tsconfig/base.json",
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+            "@api/*": ["./src/api/*"]
+        },
+        "module": "ESNext",
+        "target": "es6",
+        "resolveJsonModule": true
+    }
+}
