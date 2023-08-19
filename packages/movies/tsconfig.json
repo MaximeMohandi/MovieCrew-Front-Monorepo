@@ -3,10 +3,10 @@
     "compilerOptions": {
         "baseUrl": "./src",
         "paths": {
-            "@api/*": ["./src/api/*"]
+            "@movies/*": ["*"]
         },
         "module": "ESNext",
         "target": "es6",
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
     }
 }
