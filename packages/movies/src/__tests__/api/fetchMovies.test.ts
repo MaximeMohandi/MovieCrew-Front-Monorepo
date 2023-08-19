@@ -3,6 +3,7 @@ import movieList from "../fixtures/movieList.json";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 import { GET_MOVIES_ENDPOINT } from "@movies/shared/constants";
+import { ERROR_MESSAGES } from "@movies/errors";
 
 const server = setupServer();
 
@@ -29,10 +30,12 @@ describe("getMovies", () => {
       })
     );
 
-    await expect(fetchMovies()).rejects.toThrow("No movie found");
+    await expect(fetchMovies()).rejects.toThrow(ERROR_MESSAGES.NoMovieFound);
   });
 
   it("should throw error when failed to fetch movies", async () => {
-    await expect(fetchMovies()).rejects.toThrow("Failed to fetch movies");
+    await expect(fetchMovies()).rejects.toThrow(
+      ERROR_MESSAGES.FailedToFetchMovie
+    );
   });
 });
