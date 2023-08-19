@@ -1,5 +1,5 @@
 import { fetchMovies } from "@movies/api";
-import movieList from "./fixtures/movieList.json";
+import movieList from "../fixtures/movieList.json";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 import { GET_MOVIES_ENDPOINT } from "@movies/shared/constants";

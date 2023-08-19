@@ -1,5 +1,5 @@
 import { getMovies } from "@movies/services";
-import movieList from "./fixtures/movieList.json";
+import movieList from "../fixtures/movieList.json";
 import { fetchMovies } from "@movies/api";
 import { NoMovieFoundError } from "@movies/errors";
 
