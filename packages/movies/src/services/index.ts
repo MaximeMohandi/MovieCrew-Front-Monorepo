@@ -9,18 +9,10 @@ export const getMovies = async (
   sortBy: SortBy = "rate",
   orderBy: OrderBy = "desc"
 ): Promise<Movie[]> => {
-  try {
-    let movies = await fetchMovies();
-    movies = sortMovies(movies, sortBy);
+  let movies = await fetchMovies();
+  movies = sortMovies(movies, sortBy);
 
-    return orderBy === "asc" ? movies : movies.reverse();
-  } catch (error) {
-    if (error instanceof NoMovieFoundError) {
-      return [];
-    } else {
-      throw error;
-    }
-  }
+  return orderBy === "asc" ? movies : movies.reverse();
 };
 
 export const getMovie = async ({
@@ -29,17 +21,9 @@ export const getMovie = async ({
 }: {
   id?: number;
   title?: string;
-}): Promise<MovieDetailled | {}> => {
+}): Promise<MovieDetailled> => {
   if (id === undefined && title === undefined)
     throw new Error(ERROR_MESSAGES.EitherIdOrTitleShouldBeProvided);
 
-  try {
-    return await fetchMovie({ id, title });
-  } catch (error) {
-    if (error instanceof NoMovieFoundError) {
-      return {};
-    } else {
-      throw error;
-    }
-  }
+  return await fetchMovie({ id, title });
 };

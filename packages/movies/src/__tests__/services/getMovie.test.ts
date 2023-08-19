@@ -23,7 +23,9 @@ describe("getMovie", () => {
   it("should return empty object if NoMoviesFound", async () => {
     (fetchMovie as jest.Mock).mockRejectedValueOnce(new NoMovieFoundError());
 
-    await expect(getMovie({ id: 100 })).resolves.toEqual({});
+    await expect(getMovie({ id: 100 })).rejects.toThrow(
+      ERROR_MESSAGES.NoMovieFound
+    );
   });
 
   it("should throw error when failed to fetch movies", async () => {
