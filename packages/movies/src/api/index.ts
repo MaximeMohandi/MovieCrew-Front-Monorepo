@@ -1,10 +1,10 @@
-import axios, { AxiosError } from "axios";
+import { MovieError, NoMovieFoundError } from "@movies/errors";
 import {
   GET_MOVIES_ENDPOINT,
   GET_MOVIE_ENDPOINT,
 } from "@movies/shared/constants";
-import { NoMovieFoundError, MovieError } from "@movies/errors";
 import type { Movie, MovieDetailled } from "@movies/shared/types";
+import axios, { AxiosError } from "axios";
 
 export const fetchMovies = async (): Promise<Movie[]> => {
   try {

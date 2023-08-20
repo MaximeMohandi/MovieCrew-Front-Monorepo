@@ -8,5 +8,5 @@
     "module": "ESNext",
     "target": "es6",
     "resolveJsonModule": true
-  },
+  }
 }

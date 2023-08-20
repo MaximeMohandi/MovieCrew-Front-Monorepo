@@ -2,21 +2,17 @@ import { fetchMovies } from "@movies/api";
 import { ERROR_MESSAGES } from "@movies/errors";
 import { GET_MOVIES_ENDPOINT } from "@movies/shared/constants";
 import { rest } from "msw";
-import { setupServer } from "msw/node";
 import movieList from "../fixtures/movieList.json";
+import server, { setupTest } from "./setupApiTest";
 
-const server = setupServer();
-
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+setupTest();
 
 describe("getMovies", () => {
   it("should return array of movie", async () => {
     server.use(
       rest.get(GET_MOVIES_ENDPOINT, (req, res, ctx) => {
         return res(ctx.json(movieList));
-      })
+      }),
     );
 
     const result = await fetchMovies();
@@ -27,7 +23,7 @@ describe("getMovies", () => {
     server.use(
       rest.get(GET_MOVIES_ENDPOINT, (req, res, ctx) => {
         return res(ctx.status(404));
-      })
+      }),
     );
 
     await expect(fetchMovies()).rejects.toThrow(ERROR_MESSAGES.NoMovieFound);
@@ -35,7 +31,7 @@ describe("getMovies", () => {
 
   it("should throw error when failed to fetch movies", async () => {
     await expect(fetchMovies()).rejects.toThrow(
-      ERROR_MESSAGES.FailedToFetchMovie
+      ERROR_MESSAGES.FailedToFetchMovie,
     );
   });
 });

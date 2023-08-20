@@ -24,7 +24,7 @@ describe("getMovie", () => {
     (fetchMovie as jest.Mock).mockRejectedValueOnce(new NoMovieFoundError());
 
     await expect(getMovie({ id: 100 })).rejects.toThrow(
-      ERROR_MESSAGES.NoMovieFound
+      ERROR_MESSAGES.NoMovieFound,
     );
   });
 
@@ -32,13 +32,13 @@ describe("getMovie", () => {
     (fetchMovie as jest.Mock).mockRejectedValueOnce(new MovieError());
 
     await expect(getMovie({ id: 100 })).rejects.toThrow(
-      ERROR_MESSAGES.FailedToFetchMovie
+      ERROR_MESSAGES.FailedToFetchMovie,
     );
   });
 
   it("should throw error when no id or title provided", async () => {
     await expect(getMovie({})).rejects.toThrow(
-      new Error(ERROR_MESSAGES.EitherIdOrTitleShouldBeProvided)
+      new Error(ERROR_MESSAGES.EitherIdOrTitleShouldBeProvided),
     );
   });
 });

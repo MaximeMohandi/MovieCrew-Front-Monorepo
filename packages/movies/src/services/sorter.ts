@@ -31,7 +31,7 @@ const sortMovies = (movies: Movie[], sortBy: SortBy): Movie[] => {
 
   if (sortBy === SortOptions.RATE) {
     sortedMovies = movies.sort(
-      (a, b) => (a.averageRate ?? -1) - (b.averageRate ?? -1)
+      (a, b) => (a.averageRate ?? -1) - (b.averageRate ?? -1),
     );
   }
 
