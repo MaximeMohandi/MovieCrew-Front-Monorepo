@@ -1,11 +1,28 @@
 module.exports = {
-  extends: ["next", "turbo", "prettier"],
-  rules: {
-    "@next/next/no-html-link-for-pages": "off",
-  },
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "turbo",
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+  ],
+  plugins: ["@typescript-eslint", "prettier", "jest", "import"],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    babelOptions: {
-      presets: [require.resolve("next/babel")],
+    project: ["./tsconfig.json", "./packages/*/tsconfig.json"],
+  },
+  settings: {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
+    },
+    "import/resolver": {
+      typescript: {
+        project: ["./tsconfig.json", "./packages/*/tsconfig.json"],
+      },
     },
   },
 };
