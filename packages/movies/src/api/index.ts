@@ -8,7 +8,7 @@ import type { Movie, MovieDetailled } from "@movies/shared/types";
 
 export const fetchMovies = async (): Promise<Movie[]> => {
   try {
-    let response = await axios.get<Movie[]>(GET_MOVIES_ENDPOINT);
+    const response = await axios.get<Movie[]>(GET_MOVIES_ENDPOINT);
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError && error.response?.status === 404) {
@@ -27,7 +27,7 @@ export const fetchMovie = async ({
   title?: string;
 }): Promise<MovieDetailled> => {
   try {
-    let response = await axios.get<MovieDetailled>(GET_MOVIE_ENDPOINT, {
+    const response = await axios.get<MovieDetailled>(GET_MOVIE_ENDPOINT, {
       params: id ? { id } : { title },
     });
     return response.data;

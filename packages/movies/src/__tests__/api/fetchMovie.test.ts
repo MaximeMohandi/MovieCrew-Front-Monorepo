@@ -1,8 +1,8 @@
 import { fetchMovie } from "@movies/api";
-import movie from "../fixtures/movie.json";
+import { GET_MOVIE_ENDPOINT } from "@movies/shared/constants";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import { GET_MOVIE_ENDPOINT } from "@movies/shared/constants";
+import movie from "../fixtures/movie.json";
 
 const server = setupServer();
 

@@ -1,9 +1,9 @@
 import { fetchMovies } from "@movies/api";
-import movieList from "../fixtures/movieList.json";
+import { ERROR_MESSAGES } from "@movies/errors";
+import { GET_MOVIES_ENDPOINT } from "@movies/shared/constants";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import { GET_MOVIES_ENDPOINT } from "@movies/shared/constants";
-import { ERROR_MESSAGES } from "@movies/errors";
+import movieList from "../fixtures/movieList.json";
 
 const server = setupServer();
 

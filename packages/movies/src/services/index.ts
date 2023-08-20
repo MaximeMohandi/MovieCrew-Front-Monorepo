@@ -1,13 +1,13 @@
 import { fetchMovie, fetchMovies } from "@movies/api";
 import type { Movie, MovieDetailled } from "@movies/shared/types";
 import sortMovies, { SortBy } from "./sorter";
-import { ERROR_MESSAGES, NoMovieFoundError } from "@movies/errors";
+import { ERROR_MESSAGES } from "@movies/errors";
 
 type OrderBy = "asc" | "desc";
 
 export const getMovies = async (
   sortBy: SortBy = "rate",
-  orderBy: OrderBy = "desc"
+  orderBy: OrderBy = "desc",
 ): Promise<Movie[]> => {
   let movies = await fetchMovies();
   movies = sortMovies(movies, sortBy);

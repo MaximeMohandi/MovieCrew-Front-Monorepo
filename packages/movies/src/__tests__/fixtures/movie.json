@@ -1,43 +1,43 @@
 {
-    "peopleAverageRate": 7.118,
-    "revenue": 300218018,
-    "budget": 55000000,
-    "movieRates": [
-        {
-            "ratedBy": {
-                "id": 709306223283142676,
-                "name": "mmohandi",
-                "role": 1
-            },
-            "rate": 2.80
-        }
-    ],
-    "bestRate": {
-        "ratedBy": {
-            "id": 709306223283142676,
-            "name": "mmohandi",
-            "role": 1
-        },
-        "rate": 2.80
-    },
-    "worstRate": {
-        "ratedBy": {
-            "id": 709306223283142676,
-            "name": "mmohandi",
-            "role": 1
-        },
-        "rate": 2.80
-    },
-    "proposedBy": {
+  "peopleAverageRate": 7.118,
+  "revenue": 300218018,
+  "budget": 55000000,
+  "movieRates": [
+    {
+      "ratedBy": {
         "id": 709306223283142676,
         "name": "mmohandi",
         "role": 1
+      },
+      "rate": 2.8
+    }
+  ],
+  "bestRate": {
+    "ratedBy": {
+      "id": 709306223283142676,
+      "name": "mmohandi",
+      "role": 1
     },
-    "id": 100,
-    "title": "Superman",
-    "poster": "/d7px1FQxW4tngdACVRsCSaZq0Xl.jpg",
-    "description": "Mild-mannered Clark Kent works as a reporter at the Daily Planet alongside his crush, Lois Lane. Clark must summon his superhero alter-ego when the nefarious Lex Luthor launches a plan to take over the world.",
-    "dateAdded": "2023-07-09T16:55:15",
-    "viewingDate": "2023-07-09T18:01:39",
-    "averageRate": 2.80
+    "rate": 2.8
+  },
+  "worstRate": {
+    "ratedBy": {
+      "id": 709306223283142676,
+      "name": "mmohandi",
+      "role": 1
+    },
+    "rate": 2.8
+  },
+  "proposedBy": {
+    "id": 709306223283142676,
+    "name": "mmohandi",
+    "role": 1
+  },
+  "id": 100,
+  "title": "Superman",
+  "poster": "/d7px1FQxW4tngdACVRsCSaZq0Xl.jpg",
+  "description": "Mild-mannered Clark Kent works as a reporter at the Daily Planet alongside his crush, Lois Lane. Clark must summon his superhero alter-ego when the nefarious Lex Luthor launches a plan to take over the world.",
+  "dateAdded": "2023-07-09T16:55:15",
+  "viewingDate": "2023-07-09T18:01:39",
+  "averageRate": 2.8
 }

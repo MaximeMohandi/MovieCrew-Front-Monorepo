@@ -8,6 +8,17 @@ export interface Movie {
   averageRate: number | null;
 }
 
+export interface User {
+  id: number;
+  name: string;
+  role: number;
+}
+
+export interface MovieRate {
+  rate: number;
+  ratedBy: User;
+}
+
 export interface MovieDetailled extends Movie {
   averageRate: number | null;
   peopleAverageRate: number | null;
@@ -17,15 +28,4 @@ export interface MovieDetailled extends Movie {
   bestRate: MovieRate | null;
   worstRate: MovieRate | null;
   proposedBy: User;
-}
-
-export interface MovieRate {
-  rate: number;
-  ratedBy: User;
-}
-
-export interface User {
-  id: number;
-  name: string;
-  role: number;
 }
