@@ -1,7 +1,7 @@
-import { getMovies } from "@movies/services";
-import movieList from "../fixtures/movieList.json";
 import { fetchMovies } from "@movies/api";
 import { ERROR_MESSAGES, NoMovieFoundError } from "@movies/errors";
+import { getMovies } from "@movies/services";
+import movieList from "../fixtures/movieList.json";
 
 jest.mock("@movies/api", () => ({
   fetchMovies: jest.fn(() => Promise.resolve(movieList)),
@@ -211,11 +211,11 @@ describe("getMovies", () => {
 
   it("should throw error when failed to fetch movies", async () => {
     (fetchMovies as jest.Mock).mockRejectedValueOnce(
-      new Error(ERROR_MESSAGES.FailedToFetchMovie),
+      new Error(ERROR_MESSAGES.FailedToFetchMovie)
     );
 
     await expect(getMovies()).rejects.toThrow(
-      ERROR_MESSAGES.FailedToFetchMovie,
+      ERROR_MESSAGES.FailedToFetchMovie
     );
   });
 });

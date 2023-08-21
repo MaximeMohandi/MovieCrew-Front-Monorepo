@@ -13,8 +13,18 @@ export class NoMovieFoundError extends MovieError {
   }
 }
 
+export class UnseenMoviesNotFound extends MovieError {
+  constructor() {
+    super(ERROR_MESSAGES.NoMovieFound);
+    this.name = "UnseenMoviesNotFound";
+  }
+}
+
 export const ERROR_MESSAGES = {
   NoMovieFound: "No movie found",
   FailedToFetchMovie: "Failed to fetch movie",
   EitherIdOrTitleShouldBeProvided: "Either id or title should be provided",
+  SortByViewingDateNotPossible: "Sorting by viewing date is not possible",
+  SortByRateNotPossible: "Sorting by rate is not possible",
+  UnseenMoviesNotFound: "No unseen movies found",
 };
