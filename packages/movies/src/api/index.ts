@@ -1,8 +1,13 @@
-import { MovieError, NoMovieFoundError } from "@movies/errors";
+import {
+  MovieAlreadyExistError,
+  MovieError,
+  NoMovieFoundError,
+} from "@movies/errors";
 import {
   GET_MOVIES_ENDPOINT,
   GET_MOVIE_ENDPOINT,
   GET_RANDOM_MOVIE_ENDPOINT,
+  POST_MOVIE_ENDPOINT,
 } from "@movies/shared/constants";
 import type { Movie, MovieDetailled } from "@movies/shared/types";
 import axios, { AxiosError } from "axios";
@@ -50,5 +55,25 @@ export const fetchRandomMovie = async (): Promise<Movie | null> => {
     return response.data;
   } catch (error) {
     throw new MovieError();
+  }
+};
+
+export const postNewMovie = async (
+  title: string,
+  proposedBy: string
+): Promise<number> => {
+  try {
+    const response = await axios.post<number>(POST_MOVIE_ENDPOINT, {
+      title,
+      proposedBy,
+    });
+
+    return response.data;
+  } catch (err: unknown) {
+    if (err instanceof AxiosError && err.response?.status === 409) {
+      throw new MovieAlreadyExistError();
+    } else {
+      throw new MovieError();
+    }
   }
 };

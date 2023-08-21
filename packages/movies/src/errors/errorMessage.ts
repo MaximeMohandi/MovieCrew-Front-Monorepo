@@ -5,6 +5,7 @@ const ERROR_MESSAGES = {
   SortByViewingDateNotPossible: "Sorting by viewing date is not possible",
   SortByRateNotPossible: "Sorting by rate is not possible",
   UnseenMoviesNotFound: "No unseen movies found",
+  MovieAlereadyExist: "Movie already exist",
 };
 
 export default ERROR_MESSAGES;
