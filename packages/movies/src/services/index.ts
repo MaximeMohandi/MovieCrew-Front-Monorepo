@@ -1,13 +1,13 @@
-import { fetchMovie, fetchMovies } from "@movies/api";
+import { fetchMovie, fetchMovies, fetchRandomMovie } from "@movies/api";
+import { ERROR_MESSAGES } from "@movies/errors";
 import type { Movie, MovieDetailled } from "@movies/shared/types";
 import sortMovies, { SortBy } from "./sorter";
-import { ERROR_MESSAGES } from "@movies/errors";
 
 type OrderBy = "asc" | "desc";
 
 export const getMovies = async (
   sortBy: SortBy = "rate",
-  orderBy: OrderBy = "desc",
+  orderBy: OrderBy = "desc"
 ): Promise<Movie[]> => {
   let movies = await fetchMovies();
   movies = sortMovies(movies, sortBy);
@@ -25,5 +25,9 @@ export const getMovie = async ({
   if (id === undefined && title === undefined)
     throw new Error(ERROR_MESSAGES.EitherIdOrTitleShouldBeProvided);
 
-  return await fetchMovie({ id, title });
+  return fetchMovie({ id, title });
+};
+
+export const getRandomMovie = async (): Promise<Movie | null> => {
+  return fetchRandomMovie();
 };

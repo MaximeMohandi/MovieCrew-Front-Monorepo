@@ -2,6 +2,7 @@ import { MovieError, NoMovieFoundError } from "@movies/errors";
 import {
   GET_MOVIES_ENDPOINT,
   GET_MOVIE_ENDPOINT,
+  GET_RANDOM_MOVIE_ENDPOINT,
 } from "@movies/shared/constants";
 import type { Movie, MovieDetailled } from "@movies/shared/types";
 import axios, { AxiosError } from "axios";
@@ -37,5 +38,17 @@ export const fetchMovie = async ({
     } else {
       throw new MovieError();
     }
+  }
+};
+
+export const fetchRandomMovie = async (): Promise<Movie | null> => {
+  try {
+    const response = await axios.get<Movie>(GET_RANDOM_MOVIE_ENDPOINT);
+    if (response.status === 204) {
+      return null;
+    }
+    return response.data;
+  } catch (error) {
+    throw new MovieError();
   }
 };
