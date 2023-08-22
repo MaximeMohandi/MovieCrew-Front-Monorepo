@@ -1,16 +1,13 @@
 module.exports = {
   extends: [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "airbnb",
+    "airbnb-typescript",
     "turbo",
-    "prettier",
+    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
   ],
-  plugins: ["@typescript-eslint", "prettier", "jest", "import"],
+  plugins: ["@typescript-eslint", "jest"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: ["./tsconfig.json", "./packages/*/tsconfig.json"],
@@ -24,17 +21,5 @@ module.exports = {
         project: ["./tsconfig.json", "./packages/*/tsconfig.json"],
       },
     },
-  },
-  rules: {
-    "linebreak-style": [
-      "error",
-      process.env.NODE_ENV === "prod" ? "unix" : "windows",
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        endOfLine: "auto",
-      },
-    ],
   },
 };
