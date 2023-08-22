@@ -1,9 +1,9 @@
 import {
+  AddMovieError,
   MovieAlreadyExistError,
   MovieFetchError,
   NoMovieFoundError,
 } from "@movies/errors";
-import MovieError from "@movies/errors/movieError";
 import {
   GET_MOVIES_ENDPOINT,
   GET_MOVIE_ENDPOINT,
@@ -74,7 +74,7 @@ export const postNewMovie = async (
     if (err instanceof AxiosError && err.response?.status === 409) {
       throw new MovieAlreadyExistError();
     } else {
-      throw new MovieError();
+      throw new AddMovieError();
     }
   }
 };

@@ -4,7 +4,12 @@ import {
   fetchRandomMovie,
   postNewMovie,
 } from "@movies/api";
-import { ERROR_MESSAGES, UnseenMoviesNotFound } from "@movies/errors";
+import {
+  AddMovieError,
+  ERROR_MESSAGES,
+  NoMovieFoundError,
+  UnseenMoviesNotFound,
+} from "@movies/errors";
 import type { Movie, MovieDetailled } from "@movies/shared/types";
 import sortMovies, { SortBy } from "./sorter";
 
@@ -53,10 +58,19 @@ export const getUnseenMovies = async (
 
   return movies.filter((movie) => !movie.viewingDate);
 };
+
 export const addMovie = async (
   title: string,
   proposedBy: string,
 ): Promise<Movie> => {
-  const idMovieAdd = await postNewMovie(title, proposedBy);
-  return getMovie({ id: idMovieAdd });
+  try {
+    const idMovieAdd = await postNewMovie(title, proposedBy);
+    return await getMovie({ id: idMovieAdd });
+  } catch (error) {
+    if (error instanceof NoMovieFoundError) {
+      throw new AddMovieError(ERROR_MESSAGES.MovieAddedButNotFound);
+    }
+
+    throw error;
+  }
 };

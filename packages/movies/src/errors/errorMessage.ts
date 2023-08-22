@@ -7,6 +7,8 @@ const ERROR_MESSAGES = {
   UnseenMoviesNotFound: "No unseen movies found",
   MovieAlereadyExist: "Movie already exist",
   GenericError: "Something went wrong while processing movies",
+  AddMovieFailed: "Failed to add movie",
+  MovieAddedButNotFound: "Movie added but not found",
 };
 
 export default ERROR_MESSAGES;
