@@ -61,7 +61,7 @@ export const fetchRandomMovie = async (): Promise<Movie | null> => {
 
 export const postNewMovie = async (
   title: string,
-  proposedBy: string
+  proposedBy: string,
 ): Promise<number> => {
   try {
     const response = await axios.post<number>(POST_MOVIE_ENDPOINT, {

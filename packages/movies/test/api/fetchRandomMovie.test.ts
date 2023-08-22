@@ -14,7 +14,7 @@ describe("fetch random movie from list", () => {
         const randIndex = Math.floor(Math.random() * movies.length);
         const randMovie = movies[randIndex];
         return res(ctx.json(randMovie));
-      })
+      }),
     );
     const result = await fetchRandomMovie();
     expect(movies.map(String)).toContain(String(result));
@@ -24,7 +24,7 @@ describe("fetch random movie from list", () => {
     server.use(
       rest.get(GET_RANDOM_MOVIE_ENDPOINT, (req, res, ctx) => {
         return res(ctx.status(204));
-      })
+      }),
     );
     const result = await fetchRandomMovie();
     expect(result).toEqual(null);

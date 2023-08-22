@@ -211,11 +211,11 @@ describe("getMovies", () => {
 
   it("should throw error when failed to fetch movies", async () => {
     (fetchMovies as jest.Mock).mockRejectedValueOnce(
-      new Error(ERROR_MESSAGES.FailedToFetchMovie)
+      new Error(ERROR_MESSAGES.FailedToFetchMovie),
     );
 
     await expect(getMovies()).rejects.toThrow(
-      ERROR_MESSAGES.FailedToFetchMovie
+      ERROR_MESSAGES.FailedToFetchMovie,
     );
   });
 });

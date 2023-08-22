@@ -1,1 +1,7 @@
-export { getMovies } from "@movies/services";
+export {
+  addMovie,
+  getMovie,
+  getMovies,
+  getRandomMovie,
+  getUnseenMovies,
+} from "@movies/services";

@@ -41,13 +41,13 @@ describe("getUnseenMovies", () => {
 
   it("should not be possible to sort by viewing date", async () => {
     await expect(getUnseenMovies("viewingDate")).rejects.toThrow(
-      new TypeError(ERROR_MESSAGES.SortByViewingDateNotPossible)
+      new TypeError(ERROR_MESSAGES.SortByViewingDateNotPossible),
     );
   });
 
   it("should not be possible to sort by average rate", async () => {
     await expect(getUnseenMovies("rate")).rejects.toThrow(
-      new TypeError(ERROR_MESSAGES.SortByRateNotPossible)
+      new TypeError(ERROR_MESSAGES.SortByRateNotPossible),
     );
   });
 

@@ -12,7 +12,7 @@ type OrderBy = "asc" | "desc";
 
 export const getMovies = async (
   sortBy: SortBy = "rate",
-  orderBy: OrderBy = "desc"
+  orderBy: OrderBy = "desc",
 ): Promise<Movie[]> => {
   let movies = await fetchMovies();
   movies = sortMovies(movies, sortBy);
@@ -39,7 +39,7 @@ export const getRandomMovie = async (): Promise<Movie | null> => {
 
 export const getUnseenMovies = async (
   sortBy: SortBy = "dateAdded",
-  orderBy: OrderBy = "desc"
+  orderBy: OrderBy = "desc",
 ): Promise<Movie[]> => {
   if (sortBy === "viewingDate")
     throw new TypeError(ERROR_MESSAGES.SortByViewingDateNotPossible);
@@ -55,7 +55,7 @@ export const getUnseenMovies = async (
 };
 export const addMovie = async (
   title: string,
-  proposedBy: string
+  proposedBy: string,
 ): Promise<Movie> => {
   const idMovieAdd = await postNewMovie(title, proposedBy);
   return getMovie({ id: idMovieAdd });

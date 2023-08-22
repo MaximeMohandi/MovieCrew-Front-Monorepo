@@ -11,7 +11,7 @@ describe("post movie", () => {
     server.use(
       rest.post(POST_MOVIE_ENDPOINT, (req, res, ctx) => {
         return res(ctx.json(1));
-      })
+      }),
     );
 
     const movie = await postNewMovie("The Shawshank Redemption", "13844929842");
@@ -23,11 +23,11 @@ describe("post movie", () => {
     server.use(
       rest.post(POST_MOVIE_ENDPOINT, (req, res, ctx) => {
         return res(ctx.status(409));
-      })
+      }),
     );
 
     await expect(
-      postNewMovie("The Shawshank Redemption", "13844929842")
+      postNewMovie("The Shawshank Redemption", "13844929842"),
     ).rejects.toThrow(ERROR_MESSAGES.MovieAlereadyExist);
   });
 
@@ -35,11 +35,11 @@ describe("post movie", () => {
     server.use(
       rest.post(POST_MOVIE_ENDPOINT, (req, res, ctx) => {
         return res(ctx.status(500));
-      })
+      }),
     );
 
     await expect(
-      postNewMovie("The Shawshank Redemption", "13844929842")
+      postNewMovie("The Shawshank Redemption", "13844929842"),
     ).rejects.toThrow(ERROR_MESSAGES.GenericError);
   });
 });
