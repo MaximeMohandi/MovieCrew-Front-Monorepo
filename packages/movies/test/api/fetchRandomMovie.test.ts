@@ -1,5 +1,5 @@
 import { fetchRandomMovie } from "@movies/api";
-import { MovieError } from "@movies/errors";
+import { MovieFetchError } from "@movies/errors";
 import { GET_RANDOM_MOVIE_ENDPOINT } from "@movies/shared/constants";
 import { rest } from "msw";
 import movies from "../fixtures/movieList.json";
@@ -31,6 +31,6 @@ describe("fetch random movie from list", () => {
   });
 
   it("should throw error when failed to fetch random movie", async () => {
-    await expect(fetchRandomMovie()).rejects.toThrowError(MovieError);
+    await expect(fetchRandomMovie()).rejects.toThrowError(MovieFetchError);
   });
 });

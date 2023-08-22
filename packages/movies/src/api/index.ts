@@ -1,8 +1,9 @@
 import {
   MovieAlreadyExistError,
-  MovieError,
+  MovieFetchError,
   NoMovieFoundError,
 } from "@movies/errors";
+import MovieError from "@movies/errors/movieError";
 import {
   GET_MOVIES_ENDPOINT,
   GET_MOVIE_ENDPOINT,
@@ -20,7 +21,7 @@ export const fetchMovies = async (): Promise<Movie[]> => {
     if (error instanceof AxiosError && error.response?.status === 404) {
       throw new NoMovieFoundError();
     } else {
-      throw new MovieError();
+      throw new MovieFetchError();
     }
   }
 };
@@ -41,7 +42,7 @@ export const fetchMovie = async ({
     if (error instanceof AxiosError && error.response?.status === 404) {
       throw new NoMovieFoundError();
     } else {
-      throw new MovieError();
+      throw new MovieFetchError();
     }
   }
 };
@@ -54,7 +55,7 @@ export const fetchRandomMovie = async (): Promise<Movie | null> => {
     }
     return response.data;
   } catch (error) {
-    throw new MovieError();
+    throw new MovieFetchError();
   }
 };
 

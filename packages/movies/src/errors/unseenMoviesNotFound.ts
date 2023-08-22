@@ -1,7 +1,7 @@
 import ERROR_MESSAGES from "./errorMessage";
-import MovieError from "./movieError";
+import MovieFetchError from "./movieFetchError";
 
-export default class UnseenMoviesNotFound extends MovieError {
+export default class UnseenMoviesNotFound extends MovieFetchError {
   constructor() {
     super(ERROR_MESSAGES.NoMovieFound);
     this.name = "UnseenMoviesNotFound";

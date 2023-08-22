@@ -31,7 +31,7 @@ describe("post movie", () => {
     ).rejects.toThrow(ERROR_MESSAGES.MovieAlereadyExist);
   });
 
-  it("should throw a MovieError if the request fails", async () => {
+  it("should throw a MovieFetchError if the request fails", async () => {
     server.use(
       rest.post(POST_MOVIE_ENDPOINT, (req, res, ctx) => {
         return res(ctx.status(500));
@@ -40,6 +40,6 @@ describe("post movie", () => {
 
     await expect(
       postNewMovie("The Shawshank Redemption", "13844929842")
-    ).rejects.toThrow(ERROR_MESSAGES.FailedToFetchMovie);
+    ).rejects.toThrow(ERROR_MESSAGES.GenericError);
   });
 });

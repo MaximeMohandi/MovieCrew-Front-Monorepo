@@ -6,6 +6,7 @@ const ERROR_MESSAGES = {
   SortByRateNotPossible: "Sorting by rate is not possible",
   UnseenMoviesNotFound: "No unseen movies found",
   MovieAlereadyExist: "Movie already exist",
+  GenericError: "Something went wrong while processing movies",
 };
 
 export default ERROR_MESSAGES;
