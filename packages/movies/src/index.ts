@@ -4,4 +4,5 @@ export {
   getMovies,
   getRandomMovie,
   getUnseenMovies,
+  renameMovie,
 } from "@movies/services";

@@ -5,6 +5,7 @@ import MovieError from "./movieError";
 import MovieFetchError from "./movieFetchError";
 import NoMovieFoundError from "./noMovieFoundError";
 import UnseenMoviesNotFound from "./unseenMoviesNotFound";
+import UpdateMovieError from "./updateMovieError";
 
 export {
   AddMovieError,
@@ -14,4 +15,5 @@ export {
   MovieFetchError,
   NoMovieFoundError,
   UnseenMoviesNotFound,
+  UpdateMovieError,
 };

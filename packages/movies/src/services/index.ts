@@ -3,12 +3,14 @@ import {
   fetchMovies,
   fetchRandomMovie,
   postNewMovie,
+  updateMovieTitle,
 } from "@movies/api";
 import {
   AddMovieError,
   ERROR_MESSAGES,
   NoMovieFoundError,
   UnseenMoviesNotFound,
+  UpdateMovieError,
 } from "@movies/errors";
 import type { Movie, MovieDetailled } from "@movies/shared/types";
 import sortMovies, { SortBy } from "./sorter";
@@ -71,6 +73,21 @@ export const addMovie = async (
       throw new AddMovieError(ERROR_MESSAGES.MovieAddedButNotFound);
     }
 
+    throw error;
+  }
+};
+
+export const renameMovie = async (
+  id: number,
+  title: string,
+): Promise<Movie> => {
+  await updateMovieTitle(id, title);
+  try {
+    return await getMovie({ id });
+  } catch (error) {
+    if (error instanceof NoMovieFoundError) {
+      throw new UpdateMovieError(ERROR_MESSAGES.MovieUpdatedButNotFound);
+    }
     throw error;
   }
 };

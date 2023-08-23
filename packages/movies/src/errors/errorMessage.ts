@@ -9,6 +9,8 @@ const ERROR_MESSAGES = {
   GenericError: "Something went wrong while processing movies",
   AddMovieFailed: "Failed to add movie",
   MovieAddedButNotFound: "Movie added but not found",
+  UpdateMovieFailed: "Failed to update movie",
+  MovieUpdatedButNotFound: "Movie updated but cannot be found",
 };
 
 export default ERROR_MESSAGES;

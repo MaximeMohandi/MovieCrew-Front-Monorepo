@@ -1,13 +1,16 @@
 import {
   AddMovieError,
+  ERROR_MESSAGES,
   MovieAlreadyExistError,
   MovieFetchError,
   NoMovieFoundError,
+  UpdateMovieError,
 } from "@movies/errors";
 import {
   GET_MOVIES_ENDPOINT,
   GET_MOVIE_ENDPOINT,
   GET_RANDOM_MOVIE_ENDPOINT,
+  PATCH_MOVIE_TITLE_ENDPOINT,
   POST_MOVIE_ENDPOINT,
 } from "@movies/shared/constants";
 import type { Movie, MovieDetailled } from "@movies/shared/types";
@@ -76,5 +79,18 @@ export const postNewMovie = async (
     } else {
       throw new AddMovieError();
     }
+  }
+};
+
+export const updateMovieTitle = async (id: number, title: string) => {
+  try {
+    await axios.put<boolean>(PATCH_MOVIE_TITLE_ENDPOINT(id), {
+      newTitle: title,
+    });
+  } catch (error) {
+    if (error instanceof AxiosError && error.response?.status === 409)
+      throw new UpdateMovieError(ERROR_MESSAGES.MovieAlereadyExist);
+
+    throw new UpdateMovieError();
   }
 };
