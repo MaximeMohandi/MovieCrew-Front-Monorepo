@@ -1,6 +1,6 @@
 import { fetchRandomMovie } from "@movies/api";
+import { GET_RANDOM_MOVIE_ENDPOINT } from "@movies/api/endpoints";
 import { MovieFetchError } from "@movies/errors";
-import { GET_RANDOM_MOVIE_ENDPOINT } from "@movies/shared/constants";
 import { rest } from "msw";
 import movies from "../fixtures/movieList.json";
 import server, { setupTest } from "./setupApiTest";

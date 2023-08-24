@@ -1,5 +1,5 @@
 import { fetchMovie } from "@movies/api";
-import { GET_MOVIE_ENDPOINT } from "@movies/shared/constants";
+import { GET_MOVIE_ENDPOINT } from "@movies/api/endpoints";
 import { rest } from "msw";
 import movie from "../fixtures/movie.json";
 import server, { setupTest } from "./setupApiTest";

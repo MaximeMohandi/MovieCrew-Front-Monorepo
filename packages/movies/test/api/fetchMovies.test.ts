@@ -1,6 +1,6 @@
 import { fetchMovies } from "@movies/api";
+import { GET_MOVIES_ENDPOINT } from "@movies/api/endpoints";
 import { ERROR_MESSAGES } from "@movies/errors";
-import { GET_MOVIES_ENDPOINT } from "@movies/shared/constants";
 import { rest } from "msw";
 import movieList from "../fixtures/movieList.json";
 import server, { setupTest } from "./setupApiTest";

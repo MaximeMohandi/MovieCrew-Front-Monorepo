@@ -1,6 +1,6 @@
 import { postNewMovie } from "@movies/api";
+import { POST_MOVIE_ENDPOINT } from "@movies/api/endpoints";
 import { ERROR_MESSAGES } from "@movies/errors";
-import { POST_MOVIE_ENDPOINT } from "@movies/shared/constants";
 import { rest } from "msw";
 import server, { setupTest } from "./setupApiTest";
 
