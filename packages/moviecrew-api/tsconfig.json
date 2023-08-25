@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@movies/*": ["*"]
+      "@movies/*": ["movies/*"],
+      "@ratings/*": ["rating/*"]
     },
     "module": "ESNext",
     "target": "es6",

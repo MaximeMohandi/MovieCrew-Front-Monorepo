@@ -1,5 +1,5 @@
 {
-  "name": "movies",
+  "name": "moviecrew-api",
   "version": "1.0.0",
   "description": "contain all movie related data features",
   "private": true,
@@ -31,7 +31,8 @@
       "^.+\\.ts?$": "ts-jest"
     },
     "moduleNameMapper": {
-      "@movies/(.*)$": "<rootDir>/src/$1"
+      "@movies/(.*)$": "<rootDir>/src/movies/$1",
+      "@ratings/(.*)$": "<rootDir>/src/ratings/$1"
     }
   }
 }
