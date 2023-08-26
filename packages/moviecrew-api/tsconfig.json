@@ -4,7 +4,7 @@
     "baseUrl": "./src",
     "paths": {
       "@movies/*": ["movies/*"],
-      "@ratings/*": ["rating/*"]
+      "@ratings/*": ["ratings/*"]
     },
     "module": "ESNext",
     "target": "es6",
