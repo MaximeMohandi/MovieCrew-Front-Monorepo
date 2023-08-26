@@ -2,8 +2,8 @@ import { fetchMovies } from "@movies/api";
 import { GET_MOVIES_ENDPOINT } from "@movies/api/endpoints";
 import { ERROR_MESSAGES } from "@movies/errors";
 import { rest } from "msw";
+import server, { setupTest } from "../../setupApiTest";
 import movieList from "../fixtures/movieList.json";
-import server, { setupTest } from "./setupApiTest";
 
 setupTest();
 
