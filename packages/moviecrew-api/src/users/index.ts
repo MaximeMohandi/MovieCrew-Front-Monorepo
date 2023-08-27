@@ -1,1 +1,1 @@
-export { loginUser } from "@users/api";
+export { loginUser, registerUser } from "@users/api";

@@ -2,15 +2,15 @@
 import ERROR_MESSAGE from "./errorMessage";
 
 export class LoginError extends Error {
-  constructor(message?: string) {
-    super(message ?? ERROR_MESSAGE.LOGIN_ERROR);
+  constructor(message: string = ERROR_MESSAGE.LOGIN_ERROR) {
+    super(message);
     this.name = "LoginError";
   }
 }
 
-export class UserNotFoundError extends LoginError {
-  constructor(message: string = "User not found") {
+export class RegisterUserError extends Error {
+  constructor(message: string = ERROR_MESSAGE.REGISTER_ERROR) {
     super(message);
-    this.name = "UserNotFoundError";
+    this.name = "RegisterUserError";
   }
 }
