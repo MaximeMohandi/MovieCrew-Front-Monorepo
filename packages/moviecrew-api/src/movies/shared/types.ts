@@ -1,3 +1,5 @@
+import type { User } from "@users/shared/types";
+
 export interface Movie {
   id: number;
   title: string;
@@ -6,12 +8,6 @@ export interface Movie {
   dateAdded: Date;
   viewingDate: Date | null;
   averageRate: number | null;
-}
-
-export interface User {
-  id: number;
-  name: string;
-  role: number;
 }
 
 export interface MovieRate {
