@@ -32,7 +32,8 @@
     },
     "moduleNameMapper": {
       "@movies/(.*)$": "<rootDir>/src/movies/$1",
-      "@ratings/(.*)$": "<rootDir>/src/ratings/$1"
+      "@ratings/(.*)$": "<rootDir>/src/ratings/$1",
+      "@users/(.*)$": "<rootDir>/src/users/$1"
     }
   }
 }
