@@ -5,7 +5,8 @@
     "paths": {
       "@movies/*": ["movies/*"],
       "@ratings/*": ["ratings/*"],
-      "@users/*": ["users/*"]
+      "@users/*": ["users/*"],
+      "@spectators/*": ["spectators/*"]
     },
     "module": "ESNext",
     "target": "es6",
