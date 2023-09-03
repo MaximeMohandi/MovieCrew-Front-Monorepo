@@ -1,6 +1,6 @@
+import { loginUser } from "@users/api";
 import { LOGIN_USER_ENDPOINT } from "@users/api/endpoints";
 import { LoginError } from "@users/error";
-import { loginUser } from "@users/api";
 import { rest } from "msw";
 import server, { setupTest } from "../../setupApiTest";
 
@@ -19,7 +19,7 @@ describe("login user", () => {
         );
       }),
     );
-    const userLogged = await loginUser(1234567891011, "John Doe");
+    const userLogged = await loginUser("1234567891011", "John Doe");
     expect(userLogged).toEqual({
       id: "1234567891011",
       name: "John Doe",
@@ -40,7 +40,7 @@ describe("login user", () => {
       }),
     );
 
-    await expect(loginUser(1222222, "hiddenOne")).rejects.toThrow(
+    await expect(loginUser("1222222", "hiddenOne")).rejects.toThrow(
       "User hiddenOne not found. Please check the conformity and try again",
     );
   });
@@ -52,7 +52,7 @@ describe("login user", () => {
       }),
     );
 
-    await expect(loginUser(1222222, "hiddenOne")).rejects.toThrow(
+    await expect(loginUser("1222222", "hiddenOne")).rejects.toThrow(
       new LoginError(),
     );
   });

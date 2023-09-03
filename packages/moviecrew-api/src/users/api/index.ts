@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 import { LOGIN_USER_ENDPOINT, REGISTER_USER_ENDPOINT } from "./endpoints";
 
 export const loginUser = async (
-  userId: number,
+  userId: string,
   userName: string,
 ): Promise<User> => {
   try {
