@@ -6,7 +6,8 @@
       "@movies/*": ["movies/*"],
       "@ratings/*": ["ratings/*"],
       "@users/*": ["users/*"],
-      "@spectators/*": ["spectators/*"]
+      "@spectators/*": ["spectators/*"],
+      "@auth/*": ["auth/*"],
     },
     "module": "ESNext",
     "target": "es6",
