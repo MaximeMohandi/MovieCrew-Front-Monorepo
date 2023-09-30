@@ -1,3 +1,3 @@
 import { getToken } from "@auth/api";
 
-export { getToken };
+export { getToken as authenticateApp };
