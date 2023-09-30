@@ -1,1 +1,1 @@
-export { getSpectators } from "@spectators/api";
+export { getSpectators as fetchSpectator } from "@spectators/api";
