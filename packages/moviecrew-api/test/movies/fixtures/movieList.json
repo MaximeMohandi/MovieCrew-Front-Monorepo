@@ -25,5 +25,23 @@
     "dateAdded": "2021-03-20T15:58:08",
     "viewingDate": "2021-02-25T21:00:00",
     "averageRate": 5.7
+  },
+  {
+    "id": 4,
+    "title": "The Creator",
+    "poster": "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+    "description": null,
+    "dateAdded": "2021-03-23T15:57:56",
+    "viewingDate": null,
+    "averageRate": null
+  },
+  {
+    "id": 5,
+    "title": "Matrix",
+    "poster": "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+    "description": null,
+    "dateAdded": "2021-03-23T15:57:56",
+    "viewingDate": "2021-02-25T21:00:00",
+    "averageRate": 0
   }
 ]

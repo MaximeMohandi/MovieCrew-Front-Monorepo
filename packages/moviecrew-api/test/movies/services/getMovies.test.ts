@@ -40,6 +40,26 @@ describe("getMovies", () => {
         viewingDate: "2021-03-25T15:00:00",
         averageRate: 2.1,
       },
+      {
+        id: 5,
+        title: "Matrix",
+        poster:
+          "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+        description: null,
+        dateAdded: "2021-03-23T15:57:56",
+        viewingDate: "2021-02-25T21:00:00",
+        averageRate: 0,
+      },
+      {
+        id: 4,
+        title: "The Creator",
+        poster:
+          "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+        description: null,
+        dateAdded: "2021-03-23T15:57:56",
+        viewingDate: null,
+        averageRate: null,
+      },
     ];
 
     const result = await getMovies();
@@ -49,6 +69,26 @@ describe("getMovies", () => {
 
   it("should be sort by date added descending", async () => {
     const expectedResult = [
+      {
+        id: 4,
+        title: "The Creator",
+        poster:
+          "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+        description: null,
+        dateAdded: "2021-03-23T15:57:56",
+        viewingDate: null,
+        averageRate: null,
+      },
+      {
+        id: 5,
+        title: "Matrix",
+        poster:
+          "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+        description: null,
+        dateAdded: "2021-03-23T15:57:56",
+        viewingDate: "2021-02-25T21:00:00",
+        averageRate: 0,
+      },
       {
         id: 2,
         title: "Stuart Little",
@@ -89,6 +129,16 @@ describe("getMovies", () => {
   it("should be sort by title descending", async () => {
     const expectedResult = [
       {
+        id: 4,
+        title: "The Creator",
+        poster:
+          "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+        description: null,
+        dateAdded: "2021-03-23T15:57:56",
+        viewingDate: null,
+        averageRate: null,
+      },
+      {
         id: 2,
         title: "Stuart Little",
         poster:
@@ -107,6 +157,16 @@ describe("getMovies", () => {
         dateAdded: "2021-03-21T15:57:35",
         viewingDate: "2021-03-25T15:00:00",
         averageRate: 2.1,
+      },
+      {
+        id: 5,
+        title: "Matrix",
+        poster:
+          "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+        description: null,
+        dateAdded: "2021-03-23T15:57:56",
+        viewingDate: "2021-02-25T21:00:00",
+        averageRate: 0,
       },
       {
         id: 3,
@@ -157,6 +217,26 @@ describe("getMovies", () => {
         viewingDate: "2021-02-25T21:00:00",
         averageRate: 5.7,
       },
+      {
+        id: 5,
+        title: "Matrix",
+        poster:
+          "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+        description: null,
+        dateAdded: "2021-03-23T15:57:56",
+        viewingDate: "2021-02-25T21:00:00",
+        averageRate: 0,
+      },
+      {
+        id: 4,
+        title: "The Creator",
+        poster:
+          "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+        description: null,
+        dateAdded: "2021-03-23T15:57:56",
+        viewingDate: null,
+        averageRate: null,
+      },
     ];
 
     const result = await getMovies("viewingDate");
@@ -164,8 +244,28 @@ describe("getMovies", () => {
     expect(result).toEqual(expectedResult);
   });
 
-  it("should be sort by ascending when order is ascending", async () => {
+  it("should be sort by rate ascending when order is ascending", async () => {
     const expectedResult = [
+      {
+        id: 4,
+        title: "The Creator",
+        poster:
+          "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+        description: null,
+        dateAdded: "2021-03-23T15:57:56",
+        viewingDate: null,
+        averageRate: null,
+      },
+      {
+        id: 5,
+        title: "Matrix",
+        poster:
+          "https://i.pinimg.com/originals/b5/fa/1c/b5fa1ca5079b6fa67d19e93e9d94c5ca.jpg",
+        description: null,
+        dateAdded: "2021-03-23T15:57:56",
+        viewingDate: "2021-02-25T21:00:00",
+        averageRate: 0,
+      },
       {
         id: 1,
         title: "New Mutants",
