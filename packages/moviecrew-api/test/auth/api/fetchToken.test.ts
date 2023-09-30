@@ -1,4 +1,4 @@
-import { authenticateApp } from "@auth/api";
+import { getToken } from "@auth/api";
 import { GET_TOKEN_ENDPOINT } from "@auth/api/endpoints";
 import { AuthenticationError, InvalidCredentialError } from "@auth/errors";
 import { rest } from "msw";
@@ -27,7 +27,7 @@ describe("fetching token", () => {
       }),
     );
 
-    const { token, expirationDate } = await authenticateApp(3, "secret");
+    const { token, expirationDate } = await getToken(3, "secret");
 
     expect(token).toMatch(jwtRegex);
     expect(expirationDate).toBeGreaterThan(Date.now());
@@ -40,7 +40,7 @@ describe("fetching token", () => {
       }),
     );
 
-    await expect(authenticateApp(3, "wrong secret")).rejects.toThrow(
+    await expect(getToken(3, "wrong secret")).rejects.toThrow(
       new InvalidCredentialError(),
     );
   });
@@ -52,7 +52,7 @@ describe("fetching token", () => {
       }),
     );
 
-    await expect(authenticateApp(3, "wrong secret")).rejects.toThrow(
+    await expect(getToken(3, "wrong secret")).rejects.toThrow(
       new AuthenticationError(),
     );
   });

@@ -2,12 +2,12 @@ import { AuthenticationError, InvalidCredentialError } from "@auth/errors";
 import axios, { AxiosError } from "axios";
 import { GET_TOKEN_ENDPOINT } from "./endpoints";
 
-export const authenticateApp = async (
+export const getToken = async (
   clientId: number,
   secret: string,
-): Promise<{ token: string; expirationDate: number }> => {
+): Promise<{ token: string; expirationDate: Date }> => {
   try {
-    const response = await axios.get<{ token: string; expirationDate: number }>(
+    const response = await axios.get<{ token: string; expirationDate: Date }>(
       GET_TOKEN_ENDPOINT,
       {
         headers: {
