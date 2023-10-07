@@ -15,7 +15,7 @@ import {
 import type { Movie, MovieDetailled } from "../shared/types";
 import sortMovies, { SortBy } from "./sorter";
 
-type OrderBy = "asc" | "desc";
+export type OrderBy = "asc" | "desc";
 
 export const getMovies = async (
   sortBy: SortBy = "rate",

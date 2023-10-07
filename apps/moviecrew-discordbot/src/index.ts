@@ -2,7 +2,6 @@ import { dirname, importx } from "@discordx/importer";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
 import "dotenv/config";
-import { AuthenticationError } from "moviecrew-api";
 
 const client = new Client({
   botId: "moviecrew-discordbot",
@@ -12,13 +11,12 @@ const client = new Client({
     IntentsBitField.Flags.GuildMembers,
   ],
   silent: false,
+  botGuilds: ["240532039785250816"],
 });
-
-const test = new AuthenticationError();
 
 client.on("ready", () => {
   console.log(">> Bot started");
-  client.clearApplicationCommands();
+  client.clearApplicationCommands("240532039785250816");
   client.initApplicationCommands();
 });
 
@@ -26,7 +24,7 @@ client.on("interactionCreate", (interaction) => {
   client.executeInteraction(interaction);
 });
 
-await importx(`${dirname(import.meta.url)}/{events,commands}/**/*.{ts,js}`);
+await importx(`${dirname(import.meta.url)}/**/**/*.{events,commands}.{ts,js}`);
 
 if (!process.env.BOT_TOKEN) {
   throw Error("Could not find BOT_TOKEN in your environment");
