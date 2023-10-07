@@ -1,3 +1,3 @@
-import rateMovie from "@ratings/api";
+import { rateMovie } from "@ratings/api";
 
-export default { rateMovie };
+export { rateMovie };

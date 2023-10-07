@@ -1,4 +1,4 @@
-import rateMovie from "@ratings/api";
+import { rateMovie } from "@ratings/api";
 import POST_RATE_MOVIE_ENDPOINT from "@ratings/api/endpoints";
 import { rest } from "msw";
 import server, { setupTest } from "../../setupApiTest";

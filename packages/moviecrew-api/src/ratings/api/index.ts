@@ -2,7 +2,7 @@ import RateError from "@ratings/error";
 import axios, { AxiosError } from "axios";
 import POST_RATE_MOVIE_ENDPOINT from "./endpoints";
 
-const rateMovie = async (
+export const rateMovie = async (
   idMovie: number,
   idUserRatingMovie: number,
   rating: number,
@@ -21,5 +21,3 @@ const rateMovie = async (
     throw new RateError();
   }
 };
-
-export default rateMovie;
