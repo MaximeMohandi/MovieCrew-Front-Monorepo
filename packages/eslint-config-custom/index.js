@@ -9,20 +9,24 @@ module.exports = {
   ],
   plugins: ["@typescript-eslint", "jest"],
   parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: ["./tsconfig.json", "./packages/*/tsconfig.json"],
-  },
+
   settings: {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"],
     },
     "import/resolver": {
       typescript: {
-        project: ["./tsconfig.json", "./packages/*/tsconfig.json"],
+        project: ["**/**/tsconfig.json"],
       },
     },
   },
   rules: {
     "import/prefer-default-export": ["off", { target: "single" }],
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
   },
 };
