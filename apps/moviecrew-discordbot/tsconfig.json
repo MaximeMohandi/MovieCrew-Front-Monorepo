@@ -8,7 +8,7 @@
     "outDir": "build",
     "emitDecoratorMetadata": false, // required
     "experimentalDecorators": true, // required
-    "importHelpers": true // required
+    "importHelpers": true // required,
   },
   "references": [{ "path": "../../packages/moviecrew-api" }]
 }
