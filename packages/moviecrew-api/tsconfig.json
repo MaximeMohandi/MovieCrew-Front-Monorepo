@@ -4,16 +4,17 @@
     "baseUrl": "./src",
     "paths": {
       "@movies/*": ["movies/*"],
-      "@movies":["movies/index.ts"],
+      "@movies": ["movies/index.ts"],
       "@ratings/*": ["ratings/*"],
-      "@ratings":["ratings/index.ts"],
+      "@ratings": ["ratings/index.ts"],
       "@users/*": ["users/*"],
-      "@users":["users/index.ts"],
+      "@users": ["users/index.ts"],
       "@spectators/*": ["spectators/*"],
-      "@spectators":["spectators/index.ts"],
+      "@spectators": ["spectators/index.ts"],
       "@auth/*": ["auth/*"],
-      "@auth":["auth/index.ts"]
+      "@auth": ["auth/index.ts"]
     },
+    "composite": true,
     "module": "ESNext",
     "target": "es6",
     "resolveJsonModule": true

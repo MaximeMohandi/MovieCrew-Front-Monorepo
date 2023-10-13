@@ -9,5 +9,6 @@
     "emitDecoratorMetadata": false, // required
     "experimentalDecorators": true, // required
     "importHelpers": true // required
-  }
+  },
+  "references": [{ "path": "../../packages/moviecrew-api" }]
 }

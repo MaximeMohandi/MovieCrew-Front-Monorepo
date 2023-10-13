@@ -1,6 +1,6 @@
+import { dirname, importx } from "@discordx/importer";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
-import { dirname, importx } from "@discordx/importer";
 import "dotenv/config";
 
 const client = new Client({
