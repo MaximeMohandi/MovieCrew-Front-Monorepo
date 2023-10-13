@@ -2,6 +2,7 @@ import { dirname, importx } from "@discordx/importer";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
 import "dotenv/config";
+import { AuthenticationError } from "moviecrew-api";
 
 const client = new Client({
   botId: "moviecrew-discordbot",
@@ -12,6 +13,8 @@ const client = new Client({
   ],
   silent: false,
 });
+
+const test = new AuthenticationError();
 
 client.on("ready", () => {
   console.log(">> Bot started");
