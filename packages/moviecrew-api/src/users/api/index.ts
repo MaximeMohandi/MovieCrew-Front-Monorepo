@@ -1,6 +1,6 @@
-import { LoginError, RegisterUserError } from "@users/error";
-import { User } from "@users/shared/types";
 import axios, { AxiosError } from "axios";
+import { LoginError, RegisterUserError } from "../error";
+import { User } from "../shared/types";
 import { LOGIN_USER_ENDPOINT, REGISTER_USER_ENDPOINT } from "./endpoints";
 
 export const loginUser = async (

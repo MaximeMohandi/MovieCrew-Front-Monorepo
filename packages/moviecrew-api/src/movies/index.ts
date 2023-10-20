@@ -5,7 +5,7 @@ export {
   getRandomMovie,
   getUnseenMovies,
   renameMovie,
-} from "@movies/services";
+} from "./services";
 
 export {
   AddMovieError,

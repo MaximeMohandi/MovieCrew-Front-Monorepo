@@ -1,4 +1,4 @@
-import { Movie } from "@movies/shared/types";
+import { Movie } from "../shared/types";
 
 enum SortOptions {
   RATE = "rate",

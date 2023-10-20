@@ -1,5 +1,5 @@
-import RateError from "@ratings/error";
 import axios, { AxiosError } from "axios";
+import RateError from "../error";
 import POST_RATE_MOVIE_ENDPOINT from "./endpoints";
 
 export const rateMovie = async (

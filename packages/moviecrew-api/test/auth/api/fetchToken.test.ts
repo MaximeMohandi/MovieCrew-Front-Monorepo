@@ -1,7 +1,7 @@
-import { getToken } from "@auth/api";
-import { GET_TOKEN_ENDPOINT } from "@auth/api/endpoints";
-import { AuthenticationError, InvalidCredentialError } from "@auth/errors";
 import { rest } from "msw";
+import { AuthenticationError, InvalidCredentialError } from "../../../src/auth";
+import { getToken } from "../../../src/auth/api";
+import { GET_TOKEN_ENDPOINT } from "../../../src/auth/api/endpoints";
 import server, { setupTest } from "../../setupApiTest";
 
 setupTest();

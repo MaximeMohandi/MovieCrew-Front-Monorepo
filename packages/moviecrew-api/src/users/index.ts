@@ -1,3 +1,3 @@
-export { loginUser, registerUser } from "@users/api";
+export { loginUser, registerUser } from "./api";
 export * from "./error";
 export * from "./shared/types";

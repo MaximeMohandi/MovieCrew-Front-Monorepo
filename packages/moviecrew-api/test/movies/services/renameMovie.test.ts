@@ -1,10 +1,10 @@
-import { fetchMovie, updateMovieTitle } from "@movies/api";
 import {
-  ERROR_MESSAGES,
   MovieAlreadyExistError,
   NoMovieFoundError,
-} from "@movies/errors";
-import { renameMovie } from "@movies/services";
+  renameMovie,
+} from "../../../src/movies";
+import { fetchMovie, updateMovieTitle } from "../../../src/movies/api";
+import { ERROR_MESSAGES } from "../../../src/movies/errors";
 
 const updatedMovie = {
   id: 1,
@@ -15,7 +15,7 @@ const updatedMovie = {
   rate: 5,
 };
 
-jest.mock("@movies/api", () => ({
+jest.mock("../../../src/movies/api", () => ({
   updateMovieTitle: jest.fn(() => Promise.resolve(updatedMovie)),
   fetchMovie: jest.fn(() => Promise.resolve(updatedMovie)),
 }));

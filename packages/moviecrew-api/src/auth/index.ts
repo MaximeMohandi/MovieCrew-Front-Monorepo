@@ -1,4 +1,4 @@
-import { getToken } from "@auth/api";
+import { getToken } from "./api";
 
 export * from "./errors";
 export { getToken as authenticateApp };

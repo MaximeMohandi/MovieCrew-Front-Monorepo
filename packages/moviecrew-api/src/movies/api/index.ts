@@ -1,10 +1,4 @@
-import {
-  GET_MOVIES_ENDPOINT,
-  GET_MOVIE_ENDPOINT,
-  GET_RANDOM_MOVIE_ENDPOINT,
-  PATCH_MOVIE_TITLE_ENDPOINT,
-  POST_MOVIE_ENDPOINT,
-} from "@movies/api/endpoints";
+import axios, { AxiosError } from "axios";
 import {
   AddMovieError,
   ERROR_MESSAGES,
@@ -12,9 +6,15 @@ import {
   MovieFetchError,
   NoMovieFoundError,
   UpdateMovieError,
-} from "@movies/errors";
-import type { Movie, MovieDetailled } from "@movies/shared/types";
-import axios, { AxiosError } from "axios";
+} from "../errors";
+import type { Movie, MovieDetailled } from "../shared/types";
+import {
+  GET_MOVIES_ENDPOINT,
+  GET_MOVIE_ENDPOINT,
+  GET_RANDOM_MOVIE_ENDPOINT,
+  PATCH_MOVIE_TITLE_ENDPOINT,
+  POST_MOVIE_ENDPOINT,
+} from "./endpoints";
 
 export const fetchMovies = async (): Promise<Movie[]> => {
   try {

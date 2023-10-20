@@ -1,10 +1,10 @@
+import axios, { AxiosError } from "axios";
 import {
   NoSpectatorFoundError,
   NotASpectatorError,
   SpectatorError,
-} from "@spectators/errors";
-import { Spectator } from "@spectators/shared/types";
-import axios, { AxiosError } from "axios";
+} from "../errors";
+import { Spectator } from "../shared/types";
 import { GET_SPECTATORS_DETAILS } from "./endpoints";
 
 export const getSpectators = async (

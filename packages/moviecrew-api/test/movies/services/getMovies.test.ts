@@ -1,9 +1,9 @@
-import { fetchMovies } from "@movies/api";
-import { ERROR_MESSAGES, NoMovieFoundError } from "@movies/errors";
-import { getMovies } from "@movies/services";
+import { getMovies, NoMovieFoundError } from "../../../src/movies";
+import { fetchMovies } from "../../../src/movies/api";
+import { ERROR_MESSAGES } from "../../../src/movies/errors";
 import movieList from "../fixtures/movieList.json";
 
-jest.mock("@movies/api", () => ({
+jest.mock("../../../src/movies/api", () => ({
   fetchMovies: jest.fn(() => Promise.resolve(movieList)),
 }));
 

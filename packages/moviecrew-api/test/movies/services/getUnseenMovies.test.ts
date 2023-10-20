@@ -1,13 +1,13 @@
-import { fetchMovies } from "@movies/api";
 import {
-  ERROR_MESSAGES,
+  getUnseenMovies,
   NoMovieFoundError,
   UnseenMoviesNotFound,
-} from "@movies/errors";
-import { getUnseenMovies } from "@movies/services";
+} from "../../../src/movies";
+import { fetchMovies } from "../../../src/movies/api";
+import { ERROR_MESSAGES } from "../../../src/movies/errors";
 import movieListWithUnseen from "../fixtures/movieListWithUnseen.json";
 
-jest.mock("@movies/api", () => ({
+jest.mock("../../../src/movies/api", () => ({
   fetchMovies: jest.fn(() => Promise.resolve(movieListWithUnseen)),
 }));
 

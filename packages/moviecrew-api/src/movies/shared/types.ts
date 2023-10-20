@@ -1,4 +1,4 @@
-import type { User } from "@users/shared/types";
+import type { User } from "../../users";
 
 export interface Movie {
   id: number;

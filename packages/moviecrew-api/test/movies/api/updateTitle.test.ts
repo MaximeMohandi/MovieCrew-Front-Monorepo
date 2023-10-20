@@ -1,7 +1,7 @@
-import { updateMovieTitle } from "@movies/api";
-import { PATCH_MOVIE_TITLE_ENDPOINT } from "@movies/api/endpoints";
-import { ERROR_MESSAGES } from "@movies/errors";
 import { rest } from "msw";
+import { updateMovieTitle } from "../../../src/movies/api";
+import { PATCH_MOVIE_TITLE_ENDPOINT } from "../../../src/movies/api/endpoints";
+import { ERROR_MESSAGES } from "../../../src/movies/errors";
 import server, { setupTest } from "../../setupApiTest";
 
 setupTest();

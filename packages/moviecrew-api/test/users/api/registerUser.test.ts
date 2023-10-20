@@ -1,7 +1,6 @@
-import { registerUser } from "@users/api";
-import { REGISTER_USER_ENDPOINT } from "@users/api/endpoints";
-import { RegisterUserError } from "@users/error";
 import { rest } from "msw";
+import { registerUser, RegisterUserError } from "../../../src/users";
+import { REGISTER_USER_ENDPOINT } from "../../../src/users/api/endpoints";
 import server, { setupTest } from "../../setupApiTest";
 
 setupTest();

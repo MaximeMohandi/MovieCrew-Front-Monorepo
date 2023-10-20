@@ -27,17 +27,12 @@
   },
   "jest": {
     "verbose": true,
-    "collectCoverage": true,
     "testEnvironment": "node",
     "transform": {
       "^.+\\.ts?$": "ts-jest"
     },
-    "moduleNameMapper": {
-      "@movies/(.*)$": "<rootDir>/src/movies/$1",
-      "@ratings/(.*)$": "<rootDir>/src/ratings/$1",
-      "@users/(.*)$": "<rootDir>/src/users/$1",
-      "@spectators/(.*)$": "<rootDir>/src/spectators/$1",
-      "@auth/(.*)$": "<rootDir>/src/auth/$1"
-    }
+    "roots": [
+      "<rootDir>/src"
+    ]
   }
 }

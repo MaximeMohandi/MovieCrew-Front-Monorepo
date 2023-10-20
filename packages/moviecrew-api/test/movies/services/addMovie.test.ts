@@ -1,6 +1,6 @@
-import { fetchMovie } from "@movies/api";
-import { ERROR_MESSAGES, NoMovieFoundError } from "@movies/errors";
-import { addMovie } from "@movies/services";
+import { addMovie, NoMovieFoundError } from "../../../src/movies";
+import { fetchMovie } from "../../../src/movies/api";
+import { ERROR_MESSAGES } from "../../../src/movies/errors";
 
 const movieAdded = {
   id: 1,
@@ -12,7 +12,7 @@ const movieAdded = {
   averageRate: null,
 };
 
-jest.mock("@movies/api", () => ({
+jest.mock("../../../src/movies/api", () => ({
   postNewMovie: jest.fn(() => Promise.resolve(1)),
   fetchMovie: jest.fn(() => Promise.resolve(movieAdded)),
 }));

@@ -2,18 +2,6 @@
   "extends": "tsconfig/base.json",
   "compilerOptions": {
     "baseUrl": "./src",
-    "paths": {
-      "@movies/*": ["movies/*"],
-      "@movies": ["movies/index.ts"],
-      "@ratings/*": ["ratings/*"],
-      "@ratings": ["ratings/index.ts"],
-      "@users/*": ["users/*"],
-      "@users": ["users/index.ts"],
-      "@spectators/*": ["spectators/*"],
-      "@spectators": ["spectators/index.ts"],
-      "@auth/*": ["auth/*"],
-      "@auth": ["auth/index.ts"]
-    },
     "composite": true,
     "module": "ESNext",
     "target": "es6",

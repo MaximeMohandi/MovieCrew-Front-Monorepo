@@ -1,11 +1,11 @@
-import { getSpectators } from "@spectators/api";
-import { GET_SPECTATORS_DETAILS } from "@spectators/api/endpoints";
+import { rest } from "msw";
 import {
   NoSpectatorFoundError,
   NotASpectatorError,
   SpectatorError,
-} from "@spectators/errors";
-import { rest } from "msw";
+} from "../../../src/spectators";
+import { getSpectators } from "../../../src/spectators/api";
+import { GET_SPECTATORS_DETAILS } from "../../../src/spectators/api/endpoints";
 import server, { setupTest } from "../../setupApiTest";
 import defaultSpectatorResponse from "../fixtures/defaultSpectatorWithRate.json";
 

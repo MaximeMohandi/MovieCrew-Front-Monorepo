@@ -1,5 +1,5 @@
-import { AuthenticationError, InvalidCredentialError } from "@auth/errors";
 import axios, { AxiosError } from "axios";
+import { AuthenticationError, InvalidCredentialError } from "../errors";
 import { GET_TOKEN_ENDPOINT } from "./endpoints";
 
 export const getToken = async (

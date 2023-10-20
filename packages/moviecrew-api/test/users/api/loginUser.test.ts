@@ -1,7 +1,6 @@
-import { loginUser } from "@users/api";
-import { LOGIN_USER_ENDPOINT } from "@users/api/endpoints";
-import { LoginError } from "@users/error";
 import { rest } from "msw";
+import { LoginError, loginUser } from "../../../src/users";
+import { LOGIN_USER_ENDPOINT } from "../../../src/users/api/endpoints";
 import server, { setupTest } from "../../setupApiTest";
 
 setupTest();

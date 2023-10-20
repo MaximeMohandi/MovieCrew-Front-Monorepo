@@ -4,15 +4,15 @@ import {
   fetchRandomMovie,
   postNewMovie,
   updateMovieTitle,
-} from "@movies/api";
+} from "../api";
 import {
   AddMovieError,
   ERROR_MESSAGES,
   NoMovieFoundError,
   UnseenMoviesNotFound,
   UpdateMovieError,
-} from "@movies/errors";
-import type { Movie, MovieDetailled } from "@movies/shared/types";
+} from "../errors";
+import type { Movie, MovieDetailled } from "../shared/types";
 import sortMovies, { SortBy } from "./sorter";
 
 type OrderBy = "asc" | "desc";

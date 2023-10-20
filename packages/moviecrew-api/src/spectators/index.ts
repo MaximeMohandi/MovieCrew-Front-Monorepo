@@ -1,4 +1,4 @@
-export { getSpectators as fetchSpectator } from "@spectators/api";
+export { getSpectators as fetchSpectator } from "./api";
 export {
   NoSpectatorFoundError,
   NotASpectatorError,

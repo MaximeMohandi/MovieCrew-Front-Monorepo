@@ -1,7 +1,7 @@
-import { fetchMovies } from "@movies/api";
-import { GET_MOVIES_ENDPOINT } from "@movies/api/endpoints";
-import { ERROR_MESSAGES } from "@movies/errors";
 import { rest } from "msw";
+import { fetchMovies } from "../../../src/movies/api";
+import { GET_MOVIES_ENDPOINT } from "../../../src/movies/api/endpoints";
+import { ERROR_MESSAGES } from "../../../src/movies/errors";
 import server, { setupTest } from "../../setupApiTest";
 import movieList from "../fixtures/movieList.json";
 

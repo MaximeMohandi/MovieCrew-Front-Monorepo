@@ -1,5 +1,5 @@
-import { Movie } from "@movies/shared/types";
-import { User } from "@users/shared/types";
+import { Movie } from "../../movies";
+import { User } from "../../users";
 
 interface SpectatorRate {
   ratedMovie: Movie;
