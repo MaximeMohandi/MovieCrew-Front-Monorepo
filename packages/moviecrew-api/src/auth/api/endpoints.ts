@@ -1,2 +1,4 @@
-const AUTH_API_BASE_URL = "http://localhost:1812/api";
+import config from "../../config";
+
+const AUTH_API_BASE_URL = config.baseUrl;
 export const GET_TOKEN_ENDPOINT = `${AUTH_API_BASE_URL}/authentication/token`;

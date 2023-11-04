@@ -1,4 +1,6 @@
-const MOVIE_API_BASE_URL = "http://localhost:1812/api";
+import config from "../../config";
+
+const MOVIE_API_BASE_URL = config.baseUrl;
 export const GET_MOVIES_ENDPOINT = `${MOVIE_API_BASE_URL}/movies`;
 export const GET_MOVIE_ENDPOINT = `${MOVIE_API_BASE_URL}/movie/details`;
 export const GET_RANDOM_MOVIE_ENDPOINT = `${MOVIE_API_BASE_URL}/movie/random`;
