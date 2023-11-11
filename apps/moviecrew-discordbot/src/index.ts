@@ -2,6 +2,18 @@ import { dirname, importx } from "@discordx/importer";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
 import "dotenv/config";
+import { authenticateApp } from "moviecrew-api";
+import { env } from "./config";
+
+if (env.NODE_ENV.trimEnd() === "development") {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+}
+
+console.log(">> Starting bot");
+
+console.log(">> Connecting to database");
+
+await authenticateApp(env.API_CLIENT_ID, env.API_KEY);
 
 const client = new Client({
   botId: "moviecrew-discordbot",
@@ -11,12 +23,12 @@ const client = new Client({
     IntentsBitField.Flags.GuildMembers,
   ],
   silent: false,
-  botGuilds: ["240532039785250816"],
+  botGuilds: [env.BOT_GUILD],
 });
 
 client.on("ready", () => {
   console.log(">> Bot started");
-  client.clearApplicationCommands("240532039785250816");
+  client.clearApplicationCommands(env.BOT_GUILD);
   client.initApplicationCommands();
 });
 
@@ -26,8 +38,4 @@ client.on("interactionCreate", (interaction) => {
 
 await importx(`${dirname(import.meta.url)}/**/**/*.{events,commands}.{ts,js}`);
 
-if (!process.env.BOT_TOKEN) {
-  throw Error("Could not find BOT_TOKEN in your environment");
-}
-
-client.login(process.env.BOT_TOKEN);
+client.login(env.BOT_TOKEN);
