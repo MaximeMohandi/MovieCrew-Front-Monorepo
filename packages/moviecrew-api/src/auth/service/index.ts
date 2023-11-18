@@ -6,6 +6,6 @@ export const authenticateApp = async (
   secret: string,
 ): Promise<Date> => {
   const { token, expirationDate } = await getToken(clientId, secret);
-  axios.defaults.headers.common.Authorization = token;
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   return expirationDate;
 };
