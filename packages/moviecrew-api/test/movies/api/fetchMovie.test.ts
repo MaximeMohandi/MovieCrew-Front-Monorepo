@@ -16,7 +16,11 @@ describe("fetchMovie", () => {
 
     const result = await fetchMovie({ id: 100 });
 
-    expect(result).toEqual(movie);
+    expect(result).toEqual({
+      ...movie,
+      dateAdded: new Date("2023-07-09T16:55:15"),
+      viewingDate: new Date("2023-07-09T18:01:39"),
+    });
   });
 
   it("should throw error when no movie found", async () => {

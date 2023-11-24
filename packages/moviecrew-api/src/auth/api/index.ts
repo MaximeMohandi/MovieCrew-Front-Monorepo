@@ -11,7 +11,7 @@ export const getToken = async (
       GET_TOKEN_ENDPOINT,
       {
         headers: {
-          Authorization: `ApiKey ${secret}`,
+          ApiKey: secret,
         },
         params: {
           clientId,

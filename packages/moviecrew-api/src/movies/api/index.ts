@@ -19,7 +19,11 @@ import {
 export const fetchMovies = async (): Promise<Movie[]> => {
   try {
     const response = await axios.get<Movie[]>(GET_MOVIES_ENDPOINT);
-    return response.data;
+    return response.data.map((movie) => ({
+      ...movie,
+      dateAdded: new Date(movie.dateAdded),
+      viewingDate: movie.viewingDate ? new Date(movie.viewingDate) : null,
+    }));
   } catch (error) {
     if (error instanceof AxiosError && error.response?.status === 404) {
       throw new NoMovieFoundError();
@@ -40,7 +44,13 @@ export const fetchMovie = async ({
     const response = await axios.get<MovieDetailled>(GET_MOVIE_ENDPOINT, {
       params: id ? { id } : { title },
     });
-    return response.data;
+    return {
+      ...response.data,
+      dateAdded: new Date(response.data.dateAdded),
+      viewingDate: response.data.viewingDate
+        ? new Date(response.data.viewingDate)
+        : null,
+    };
   } catch (error) {
     if (error instanceof AxiosError && error.response?.status === 404) {
       throw new NoMovieFoundError();

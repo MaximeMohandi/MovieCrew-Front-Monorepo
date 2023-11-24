@@ -14,7 +14,9 @@ describe("when authenticating an app", () => {
     // Act
     const expirationDate = await authenticateApp(1, "secret");
     // Assert
-    expect(axios.defaults.headers.common.Authorization).toEqual("this.a.token");
+    expect(axios.defaults.headers.common.Authorization).toEqual(
+      "Bearer this.a.token",
+    );
     expect(expirationDate.toDateString()).toEqual(new Date().toDateString());
   });
 });

@@ -11,7 +11,7 @@ describe("fetching token", () => {
   it("should return a token with an expiration date", async () => {
     server.use(
       rest.get(GET_TOKEN_ENDPOINT, (req, res, ctx) => {
-        const secret = req.headers.get("Authorization")?.split(" ")[1];
+        const secret = req.headers.get("ApiKey");
         const clientId = req.url.searchParams.get("clientId");
 
         if (clientId === "3" && secret === "secret") {
