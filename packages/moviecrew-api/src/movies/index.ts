@@ -7,10 +7,6 @@ export {
   renameMovie,
 } from "./services";
 
-export type { OrderBy } from "./services";
-export { SortOptions } from "./services/sorter";
-export type { SortBy } from "./services/sorter";
-
 export {
   AddMovieError,
   MovieAlreadyExistError,
@@ -21,4 +17,11 @@ export {
   UpdateMovieError,
 } from "./errors";
 
-export type * from "./shared/types";
+export { OrderOptions, SortOptions } from "./shared/types";
+export type {
+  Movie,
+  MovieDetailled,
+  MovieRate,
+  OrderBy,
+  SortBy,
+} from "./shared/types";

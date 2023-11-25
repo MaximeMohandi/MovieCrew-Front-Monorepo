@@ -25,3 +25,17 @@ export interface MovieDetailled extends Movie {
   worstRate: MovieRate | null;
   proposedBy: User;
 }
+
+export enum SortOptions {
+  RATE = "rate",
+  DATE_ADDED = "dateAdded",
+  TITLE = "title",
+  VIEWING_DATE = "viewingDate",
+}
+
+export type SortBy = `${SortOptions}`; // "map sort options to string literal type"
+export enum OrderOptions {
+  ASCENDING = "asc",
+  DESCENDING = "desc",
+}
+export type OrderBy = `${OrderOptions}`;

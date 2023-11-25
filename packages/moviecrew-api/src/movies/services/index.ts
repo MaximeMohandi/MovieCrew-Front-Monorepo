@@ -12,10 +12,8 @@ import {
   UnseenMoviesNotFound,
   UpdateMovieError,
 } from "../errors";
-import type { Movie, MovieDetailled } from "../shared/types";
-import sortMovies, { SortBy } from "./sorter";
-
-export type OrderBy = "asc" | "desc";
+import type { Movie, MovieDetailled, OrderBy, SortBy } from "../shared/types";
+import sortMovies from "./sorter";
 
 export const getMovies = async (
   sortBy: SortBy = "rate",

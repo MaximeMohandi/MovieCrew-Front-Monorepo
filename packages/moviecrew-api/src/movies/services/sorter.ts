@@ -1,13 +1,5 @@
-import { Movie } from "../shared/types";
-
-export enum SortOptions {
-  RATE = "rate",
-  DATE_ADDED = "dateAdded",
-  TITLE = "title",
-  VIEWING_DATE = "viewingDate",
-}
-
-export type SortBy = `${SortOptions}`; // "map sort options to string literal type"
+import type { SortBy } from "../shared/types";
+import { Movie, SortOptions } from "../shared/types";
 
 const byDate = (a: Date | string | null, b: Date | string | null) => {
   return (a ? new Date(a).getTime() : -1) - (b ? new Date(b).getTime() : -1);
