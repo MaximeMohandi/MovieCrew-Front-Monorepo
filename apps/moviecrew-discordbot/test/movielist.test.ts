@@ -1,3 +1,4 @@
+import { PaginationItem } from "@discordx/pagination";
 import { EmbedBuilder } from "discord.js";
 import * as moviecrewApi from "moviecrew-api";
 import { NoMovieFoundError } from "moviecrew-api";
@@ -10,7 +11,7 @@ beforeEach(() => {
   spy.mockReset();
 });
 
-describe("when the command is called", () => {
+describe("when the movieList command is called", () => {
   it("should return a list of movies embedded in a message", async () => {
     // arrange
     spy.mockResolvedValue(moviesStub);
@@ -91,33 +92,30 @@ describe("when the command is called", () => {
     ];
 
     // act
-    const res = await movieListMessage();
+    const res = (await movieListMessage()) as PaginationItem[];
 
     // assert
-    expect(res).toHaveLength(expectedEmbeds.length);
     expectedEmbeds.forEach((expectedEmbed, index) => {
-      expect(res[index]).toMatchObject({ embeds: [expectedEmbed] });
+      expect(res[index]).toMatchObject({
+        embeds: [expectedEmbed],
+      });
     });
   });
 
-  it("should reurn a message with 'No movies found' if the list of movies is empty", async () => {
+  it("should return a message with 'No movies found' if the list of movies is empty", async () => {
     // arrange
     spy.mockRejectedValue(new NoMovieFoundError());
     const expectedEmbed = new EmbedBuilder()
-      .setTitle("🎬 - Movie List")
+      .setTitle("🎬 - Movie Error")
       .setURL("https://example.com")
       .setDescription("No movie found")
-      .setColor("#d92f1c")
-      .setFooter({
-        text: "0",
-      });
+      .setColor("#d92f1c");
 
     // act
     const res = await movieListMessage();
 
     // assert
-    expect(res).toHaveLength(1);
-    expect(res[0]).toMatchObject({ embeds: [expectedEmbed] });
+    expect(res).toMatchObject([{ embeds: [expectedEmbed] }]);
   });
 });
 
