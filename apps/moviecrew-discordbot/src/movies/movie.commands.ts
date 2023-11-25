@@ -1,16 +1,16 @@
 /* eslint-disable class-methods-use-this */
-import { PaginationType } from "@discordx/pagination";
+import { Pagination, PaginationType } from "@discordx/pagination";
 import { EnumChoice } from "@discordx/utilities";
 import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import { Discord, Slash, SlashChoice, SlashOption } from "discordx";
-import { SortBy } from "moviecrew-api";
+import { SortBy, SortOptions } from "moviecrew-api";
 import { movieListMessage } from "./movieService";
 
 @Discord()
 export class MovieCommands {
   @Slash({ name: "movielist", description: "List all movies" })
   async movieList(
-    @SlashChoice(...EnumChoice(SortBy))
+    @SlashChoice(...EnumChoice(SortOptions))
     @SlashOption({
       description: "sort list",
       name: "sort-by",
