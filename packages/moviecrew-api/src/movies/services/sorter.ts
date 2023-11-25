@@ -1,6 +1,6 @@
 import { Movie } from "../shared/types";
 
-enum SortOptions {
+export enum SortOptions {
   RATE = "rate",
   DATE_ADDED = "dateAdded",
   TITLE = "title",

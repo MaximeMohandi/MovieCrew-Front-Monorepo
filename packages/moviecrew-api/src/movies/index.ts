@@ -8,6 +8,7 @@ export {
 } from "./services";
 
 export type { OrderBy } from "./services";
+export { SortOptions } from "./services/sorter";
 export type { SortBy } from "./services/sorter";
 
 export {
