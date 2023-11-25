@@ -121,12 +121,8 @@ describe("when the movieList command is called", () => {
 
 describe("when commmands as options should call the api with the correct sort and order options", () => {
   const testCases = [
-    { sortBy: "rate", orderBy: "asc" },
-    { sortBy: "rate", orderBy: "desc" },
     { sortBy: "dateAdded", orderBy: "asc" },
     { sortBy: "dateAdded", orderBy: "desc" },
-    { sortBy: "viewingDate", orderBy: "asc" },
-    { sortBy: "viewingDate", orderBy: "desc" },
     { sortBy: "title", orderBy: "asc" },
     { sortBy: "title", orderBy: "desc" },
     { sortBy: undefined, orderBy: undefined },

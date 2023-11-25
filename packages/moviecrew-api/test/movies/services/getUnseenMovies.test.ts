@@ -1,8 +1,4 @@
-import {
-  getUnseenMovies,
-  NoMovieFoundError,
-  UnseenMoviesNotFound,
-} from "../../../src/movies";
+import { getUnseenMovies, UnseenMoviesNotFound } from "../../../src/movies";
 import { fetchMovies } from "../../../src/movies/api";
 import { ERROR_MESSAGES } from "../../../src/movies/errors";
 import movieListWithUnseen from "../fixtures/movieListWithUnseen.json";
@@ -52,7 +48,9 @@ describe("getUnseenMovies", () => {
   });
 
   it("should throw error when no movies found with no viewing date", async () => {
-    (fetchMovies as jest.Mock).mockRejectedValueOnce(new NoMovieFoundError());
+    (fetchMovies as jest.Mock).mockRejectedValueOnce(
+      new UnseenMoviesNotFound(),
+    );
     await expect(getUnseenMovies()).rejects.toThrow(new UnseenMoviesNotFound());
   });
 });

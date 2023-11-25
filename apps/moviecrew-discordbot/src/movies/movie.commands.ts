@@ -5,7 +5,7 @@ import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import { Discord, Slash, SlashChoice, SlashOption } from "discordx";
 import type { OrderBy, SortBy } from "moviecrew-api";
 import { OrderOptions, SortOptions } from "moviecrew-api";
-import { movieListMessage } from "./movieService";
+import { movieListMessage, toWatchListMessage } from "./movieService";
 
 @Discord()
 export class MovieCommands {
@@ -28,6 +28,45 @@ export class MovieCommands {
     interaction: CommandInteraction,
   ): Promise<void> {
     const message = await movieListMessage(sortBy, orderBy);
+
+    new Pagination(interaction, message, {
+      type: PaginationType.Button,
+    }).send();
+  }
+
+  @Slash({ name: "towatchlist", description: "List movies to watch" })
+  async toWatchList(
+    @SlashChoice(
+      ...EnumChoice(
+        Object.entries(SortOptions)
+          .filter(
+            (options) =>
+              ![SortOptions.VIEWING_DATE, SortOptions.RATE].includes(
+                options[1],
+              ),
+          )
+          .reduce(
+            (dict, [key, value]) => Object.assign(dict, { [key]: value }),
+            {},
+          ),
+      ),
+    )
+    @SlashOption({
+      description: "sort list",
+      name: "sort-by",
+      type: ApplicationCommandOptionType.String,
+    })
+    sortBy: SortBy,
+    @SlashChoice(...EnumChoice(OrderOptions))
+    @SlashOption({
+      description: "order list",
+      name: "order-by",
+      type: ApplicationCommandOptionType.String,
+    })
+    orderBy: OrderBy,
+    interaction: CommandInteraction,
+  ): Promise<void> {
+    const message = await toWatchListMessage(sortBy, orderBy);
 
     new Pagination(interaction, message, {
       type: PaginationType.Button,

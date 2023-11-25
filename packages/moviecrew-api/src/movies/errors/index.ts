@@ -42,7 +42,7 @@ export class NoMovieFoundError extends MovieFetchError {
 
 export class UnseenMoviesNotFound extends MovieFetchError {
   constructor() {
-    super(ERROR_MESSAGES.NoMovieFound);
+    super(ERROR_MESSAGES.UnseenMoviesNotFound);
     this.name = "UnseenMoviesNotFound";
   }
 }
