@@ -1,8 +1,8 @@
 import { PaginationItem } from "@discordx/pagination";
 import { EmbedBuilder } from "discord.js";
 import * as moviecrewApi from "moviecrew-api";
-import { toWatchListMessage } from "../src/movies/movieService";
-import moviesStub from "./fixtures/unseenMovies";
+import { toWatchListMessage } from "../../src/movies/movieService";
+import moviesStub from "../fixtures/unseenMovies";
 
 const spy = jest.spyOn(moviecrewApi, "getUnseenMovies");
 

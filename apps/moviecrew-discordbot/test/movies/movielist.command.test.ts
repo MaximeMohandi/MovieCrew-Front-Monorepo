@@ -2,8 +2,8 @@ import { PaginationItem } from "@discordx/pagination";
 import { EmbedBuilder } from "discord.js";
 import * as moviecrewApi from "moviecrew-api";
 import { NoMovieFoundError } from "moviecrew-api";
-import { movieListMessage } from "../src/movies/movieService";
-import moviesStub from "./fixtures/movies";
+import { movieListMessage } from "../../src/movies/movieService";
+import moviesStub from "../fixtures/movies";
 
 const spy = jest.spyOn(moviecrewApi, "getMovies");
 

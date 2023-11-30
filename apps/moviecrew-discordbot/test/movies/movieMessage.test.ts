@@ -1,7 +1,7 @@
 import { PaginationItem } from "@discordx/pagination";
 import { EmbedBuilder } from "discord.js";
-import { moviesPaginated } from "../src/movies/movieMessage";
-import movieStub from "./fixtures/movies";
+import { moviesPaginated } from "../../src/movies/movieMessage";
+import movieStub from "../fixtures/movies";
 
 test("create paginated message from movie list", () => {
   const expectedEmbeds = [
