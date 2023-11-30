@@ -10,6 +10,13 @@ const chunkList = <T>(list: T[]): T[][] => {
   return chunks;
 };
 
+const formatDate: (date: Date) => string = (date: Date): string =>
+  date.toLocaleDateString("fr-FR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
 const defaultMovieEmbed = (title: string, description: string): EmbedBuilder =>
   new EmbedBuilder()
     .setTitle(`🎬 - ${title}`)
@@ -34,8 +41,8 @@ const moviesToEmbedList = (
     const { title, averageRate, dateAdded, viewingDate } = movie;
     message.addFields({
       name: `${title}${averageRate ? ` - ${averageRate.toFixed(2)}` : ""}`,
-      value: `added: ${dateAdded.toLocaleDateString()} | seen: ${
-        viewingDate ? viewingDate.toLocaleDateString() : "not yet"
+      value: `added: ${formatDate(dateAdded)} | seen: ${
+        viewingDate ? formatDate(viewingDate) : "not yet"
       }`,
       inline: false,
     });
