@@ -1,7 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "globalEnv": ["NODE_ENV"],
+  "globalEnv": [
+    "NODE_ENV",
+    "BOT_TOKEN",
+    "BOT_GUILD",
+    "API_CLIENT_ID",
+    "API_KEY",
+    "NODE_TLS_REJECT_UNAUTHORIZED"
+  ],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],

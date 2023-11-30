@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { dirname, importx } from "@discordx/importer";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
@@ -9,9 +10,9 @@ if (env.NODE_ENV.trimEnd() === "development") {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 }
 
-console.log(">> Starting bot");
+console.info(">> Starting bot");
 
-console.log(">> Connecting to database");
+console.info(">> Connecting to database");
 
 await authenticateApp(env.API_CLIENT_ID, env.API_KEY);
 
@@ -27,7 +28,7 @@ const client = new Client({
 });
 
 client.on("ready", () => {
-  console.log(">> Bot started");
+  console.info(">> Bot started");
   client.clearApplicationCommands(env.BOT_GUILD);
   client.initApplicationCommands();
 });
