@@ -8,10 +8,6 @@ node_modules
 # testing
 coverage
 
-#local onfig file
-config.dev.ts
-config.test.ts
-
 # next.js
 .next/
 out/
