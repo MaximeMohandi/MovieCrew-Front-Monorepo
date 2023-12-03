@@ -1,6 +1,6 @@
 import { PaginationItem } from "@discordx/pagination";
 import { BaseMessageOptions, EmbedBuilder } from "discord.js";
-import { Movie } from "moviecrew-api";
+import { Movie, MovieDetailled } from "moviecrew-api";
 
 const chunkList = <T>(list: T[]): T[][] => {
   const chunks = [];
@@ -69,4 +69,110 @@ export const moviesPaginated = (
 
 export const movieErrorEmbed = (errorMessage: string): BaseMessageOptions => {
   return { embeds: [defaultMovieEmbed("Movie Error", errorMessage)] };
+};
+
+const addMovieEmbedRateDetail = (
+  movieDetails: EmbedBuilder,
+  movie: MovieDetailled,
+): EmbedBuilder => {
+  const { movieRates } = movie;
+  if (movieRates && movieRates.length > 0) {
+    movieDetails.addFields([
+      {
+        name: "------- Rates Detail -------",
+        value: " ", // Set value to a non-empty string
+        inline: false,
+      },
+    ]);
+    movieRates
+      .sort((a, b) => b.rate - a.rate)
+      .forEach((movieRate) => {
+        movieDetails.addFields({
+          name: movieRate.ratedBy.name,
+          value: movieRate.rate.toFixed(2).toString(),
+          inline: false,
+        });
+      });
+  }
+  return movieDetails;
+};
+
+const toDollarString = (value: number): string => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  })
+    .format(value)
+    .toString();
+};
+
+export const movieEmbed = (movie: MovieDetailled): BaseMessageOptions => {
+  const {
+    title,
+    description,
+    poster,
+    dateAdded,
+    viewingDate,
+    proposedBy,
+    revenue,
+    budget,
+    peopleAverageRate,
+    averageRate,
+  } = movie;
+  const detailledEmbed = defaultMovieEmbed(title, description)
+    .setThumbnail(poster)
+    .setFields(
+      {
+        name: "Date Added",
+        value: formatDate(dateAdded),
+        inline: true,
+      },
+      {
+        name: "Date Viewed",
+        value: viewingDate ? formatDate(viewingDate) : "not yet",
+        inline: true,
+      },
+      {
+        name: "Proposed By",
+        value: proposedBy ? proposedBy.name : "unknown",
+        inline: true,
+      },
+      {
+        name: "Server Average Rate",
+        value: averageRate ? averageRate.toFixed(2).toString() : "-",
+        inline: true,
+      },
+      // blanck line to not break the layout
+      {
+        name: " ",
+        value: " ",
+        inline: true,
+      },
+      {
+        name: "People Average Rate",
+        value: peopleAverageRate ? peopleAverageRate.toFixed(2) : "-",
+        inline: true,
+      },
+      {
+        name: "Budget",
+        value: budget ? toDollarString(budget) : "-",
+        inline: true,
+      },
+      {
+        name: "Revenue",
+        value: revenue ? toDollarString(revenue) : "-",
+        inline: true,
+      },
+      {
+        name: "Net value",
+        value: toDollarString((revenue ?? 0) - (budget ?? 0)),
+        inline: true,
+      },
+    );
+
+  addMovieEmbedRateDetail(detailledEmbed, movie);
+
+  return { embeds: [detailledEmbed] };
 };

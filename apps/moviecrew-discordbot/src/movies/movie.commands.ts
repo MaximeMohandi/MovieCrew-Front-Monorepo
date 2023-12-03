@@ -5,7 +5,11 @@ import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import { Discord, Slash, SlashChoice, SlashOption } from "discordx";
 import type { OrderBy, SortBy } from "moviecrew-api";
 import { OrderOptions, SortOptions } from "moviecrew-api";
-import { movieListMessage, toWatchListMessage } from "./movieService";
+import {
+  detailledMovieMessage,
+  movieListMessage,
+  toWatchListMessage,
+} from "./movieService";
 
 @Discord()
 export class MovieCommands {
@@ -71,5 +75,24 @@ export class MovieCommands {
     new Pagination(interaction, message, {
       type: PaginationType.Button,
     }).send();
+  }
+
+  @Slash({
+    name: "moviedetails",
+    description: "Get movie details",
+  })
+  async movieDetails(
+    @SlashOption({
+      description: "movie title",
+      name: "title",
+      type: ApplicationCommandOptionType.String,
+      required: true,
+    })
+    movieTitle: string,
+    interaction: CommandInteraction,
+  ): Promise<void> {
+    const message = await detailledMovieMessage({ movieTitle });
+
+    interaction.reply(message);
   }
 }

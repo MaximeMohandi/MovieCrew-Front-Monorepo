@@ -23,7 +23,7 @@ export interface MovieDetailled extends Movie {
   movieRates: MovieRate[];
   bestRate: MovieRate | null;
   worstRate: MovieRate | null;
-  proposedBy: User;
+  proposedBy: User | null;
 }
 
 export enum SortOptions {

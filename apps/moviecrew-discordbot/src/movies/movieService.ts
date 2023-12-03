@@ -1,12 +1,14 @@
 import { PaginationItem } from "@discordx/pagination";
+import { BaseMessageOptions } from "discord.js";
 import {
   MovieError,
+  getMovie,
   getMovies,
   getUnseenMovies,
   type OrderBy,
   type SortBy,
 } from "moviecrew-api";
-import { movieErrorEmbed, moviesPaginated } from "./movieMessage";
+import { movieEmbed, movieErrorEmbed, moviesPaginated } from "./movieMessage";
 
 export const movieListMessage = async (
   sortOption?: SortBy,
@@ -36,6 +38,26 @@ export const toWatchListMessage = async (
   } catch (error) {
     if (error instanceof MovieError) {
       return [movieErrorEmbed(error.message)];
+    }
+
+    throw error;
+  }
+};
+
+export const detailledMovieMessage = async ({
+  movieId = undefined,
+  movieTitle = undefined,
+}: {
+  movieId?: number;
+  movieTitle?: string;
+}): Promise<BaseMessageOptions> => {
+  try {
+    const movie = await getMovie({ title: movieTitle, id: movieId });
+
+    return movieEmbed(movie);
+  } catch (error) {
+    if (error instanceof MovieError) {
+      return movieErrorEmbed(error.message);
     }
 
     throw error;
