@@ -108,22 +108,25 @@ const toDollarString = (value: number): string => {
     .toString();
 };
 
-export const movieEmbed = (movie: MovieDetailled): BaseMessageOptions => {
-  const {
-    title,
-    description,
-    poster,
-    dateAdded,
-    viewingDate,
-    proposedBy,
-    revenue,
-    budget,
-    peopleAverageRate,
-    averageRate,
-  } = movie;
-  const detailledEmbed = defaultMovieEmbed(title, description)
-    .setThumbnail(poster)
-    .setFields(
+export const movieEmbed = (
+  movie: Movie | MovieDetailled,
+): BaseMessageOptions => {
+  const embeddedMovie = defaultMovieEmbed(
+    movie.title,
+    movie.description,
+  ).setThumbnail(movie.poster);
+
+  if ("budget" in movie) {
+    const {
+      dateAdded,
+      viewingDate,
+      proposedBy,
+      revenue,
+      budget,
+      peopleAverageRate,
+      averageRate,
+    } = movie;
+    const detailledEmbed = embeddedMovie.setFields(
       {
         name: "Date Added",
         value: formatDate(dateAdded),
@@ -172,7 +175,10 @@ export const movieEmbed = (movie: MovieDetailled): BaseMessageOptions => {
       },
     );
 
-  addMovieEmbedRateDetail(detailledEmbed, movie);
+    addMovieEmbedRateDetail(detailledEmbed, movie);
 
-  return { embeds: [detailledEmbed] };
+    return { embeds: [detailledEmbed] };
+  }
+
+  return { embeds: [embeddedMovie] };
 };

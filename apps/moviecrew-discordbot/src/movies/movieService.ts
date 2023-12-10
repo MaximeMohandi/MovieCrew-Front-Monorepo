@@ -2,8 +2,10 @@ import { PaginationItem } from "@discordx/pagination";
 import { BaseMessageOptions } from "discord.js";
 import {
   MovieError,
+  UnseenMoviesNotFound,
   getMovie,
   getMovies,
+  getRandomMovie,
   getUnseenMovies,
   type OrderBy,
   type SortBy,
@@ -54,6 +56,23 @@ export const detailledMovieMessage = async ({
   try {
     const movie = await getMovie({ title: movieTitle, id: movieId });
 
+    return movieEmbed(movie);
+  } catch (error) {
+    if (error instanceof MovieError) {
+      return movieErrorEmbed(error.message);
+    }
+
+    throw error;
+  }
+};
+
+export const randomMovieMessage = async (): Promise<BaseMessageOptions> => {
+  try {
+    const movie = await getRandomMovie();
+
+    if (!movie || movie === null) {
+      throw new UnseenMoviesNotFound();
+    }
     return movieEmbed(movie);
   } catch (error) {
     if (error instanceof MovieError) {
