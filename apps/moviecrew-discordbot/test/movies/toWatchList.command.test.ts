@@ -2,6 +2,7 @@ import { PaginationItem } from "@discordx/pagination";
 import { EmbedBuilder } from "discord.js";
 import * as moviecrewApi from "moviecrew-api";
 import { toWatchListMessage } from "../../src/movies/movieService";
+import { expectToMatchEmbedMessage } from "../embedTestMethod";
 import moviesStub from "../fixtures/unseenMovies";
 
 const spy = jest.spyOn(moviecrewApi, "getUnseenMovies");
@@ -42,9 +43,7 @@ describe("when the towatch command is called", () => {
 
     // assert
     expectedEmbeds.forEach((expectedEmbed, index) => {
-      expect(res[index]).toMatchObject({
-        embeds: [expectedEmbed],
-      });
+      expectToMatchEmbedMessage(res[index], expectedEmbed);
     });
   });
 
@@ -61,7 +60,7 @@ describe("when the towatch command is called", () => {
     const res = await toWatchListMessage();
 
     // assert
-    expect(res).toMatchObject([{ embeds: [expectedEmbed] }]);
+    expectToMatchEmbedMessage(res[0], expectedEmbed);
   });
 });
 

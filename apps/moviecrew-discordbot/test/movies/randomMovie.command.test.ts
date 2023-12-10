@@ -1,6 +1,7 @@
 import { EmbedBuilder } from "discord.js";
 import * as moviecrewApi from "moviecrew-api";
 import { randomMovieMessage } from "../../src/movies/movieService";
+import { expectToMatchEmbedMessage } from "../embedTestMethod";
 
 const spy = jest.spyOn(moviecrewApi, "getRandomMovie");
 
@@ -37,6 +38,6 @@ describe("when randomMovie command is called", () => {
     const result = await randomMovieMessage();
 
     // assert
-    expect(result).toMatchObject({ embeds: [expectedEmbed] });
+    expectToMatchEmbedMessage(result, expectedEmbed);
   });
 });

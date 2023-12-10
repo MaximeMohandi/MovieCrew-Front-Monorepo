@@ -3,6 +3,7 @@ import { EmbedBuilder } from "discord.js";
 import * as moviecrewApi from "moviecrew-api";
 import { NoMovieFoundError } from "moviecrew-api";
 import { movieListMessage } from "../../src/movies/movieService";
+import { expectToMatchEmbedMessage } from "../embedTestMethod";
 import moviesStub from "../fixtures/movies";
 
 const spy = jest.spyOn(moviecrewApi, "getMovies");
@@ -96,9 +97,7 @@ describe("when the movieList command is called", () => {
 
     // assert
     expectedEmbeds.forEach((expectedEmbed, index) => {
-      expect(res[index]).toMatchObject({
-        embeds: [expectedEmbed],
-      });
+      expectToMatchEmbedMessage(res[index], expectedEmbed);
     });
   });
 
@@ -115,7 +114,7 @@ describe("when the movieList command is called", () => {
     const res = await movieListMessage();
 
     // assert
-    expect(res).toMatchObject([{ embeds: [expectedEmbed] }]);
+    expectToMatchEmbedMessage(res[0], expectedEmbed);
   });
 });
 
