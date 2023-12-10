@@ -40,4 +40,36 @@ describe("when randomMovie command is called", () => {
     // assert
     expectToMatchEmbedMessage(result, expectedEmbed);
   });
+
+  it("should return a message with 'No unseen movies found' if the movie is null", async () => {
+    // arrange
+    spy.mockResolvedValue(null);
+    const expectedEmbed = new EmbedBuilder()
+      .setTitle("🎬 - Movie Error")
+      .setURL("https://example.com")
+      .setDescription("No unseen movies found")
+      .setColor("#d92f1c");
+
+    // act
+    const result = await randomMovieMessage();
+
+    // assert
+    expectToMatchEmbedMessage(result, expectedEmbed);
+  });
+
+  it("should return a message with 'Movie Error' if an error occurs", async () => {
+    // arrange
+    spy.mockRejectedValue(new moviecrewApi.MovieError());
+    const expectedEmbed = new EmbedBuilder()
+      .setTitle("🎬 - Movie Error")
+      .setURL("https://example.com")
+      .setDescription("Something went wrong while processing movies")
+      .setColor("#d92f1c");
+
+    // act
+    const result = await randomMovieMessage();
+
+    // assert
+    expectToMatchEmbedMessage(result, expectedEmbed);
+  });
 });
