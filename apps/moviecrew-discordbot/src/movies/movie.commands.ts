@@ -6,8 +6,10 @@ import { Discord, Slash, SlashChoice, SlashOption } from "discordx";
 import type { OrderBy, SortBy } from "moviecrew-api";
 import { OrderOptions, SortOptions } from "moviecrew-api";
 import {
+  addMovieToWatchList,
   detailledMovieMessage,
   movieListMessage,
+  randomMovieMessage,
   toWatchListMessage,
 } from "./movieService";
 
@@ -92,6 +94,35 @@ export class MovieCommands {
     interaction: CommandInteraction,
   ): Promise<void> {
     const message = await detailledMovieMessage({ movieTitle });
+
+    interaction.reply(message);
+  }
+
+  @Slash({
+    name: "randommovie",
+    description: "Get random movie",
+  })
+  async randomMovie(interaction: CommandInteraction): Promise<void> {
+    const message = await randomMovieMessage();
+
+    interaction.reply(message);
+  }
+
+  @Slash({
+    name: "addmovie",
+    description: "Add movie to watch list",
+  })
+  async addMovie(
+    @SlashOption({
+      description: "movie title",
+      name: "title",
+      type: ApplicationCommandOptionType.String,
+      required: true,
+    })
+    movieTitle: string,
+    interaction: CommandInteraction,
+  ): Promise<void> {
+    const message = await addMovieToWatchList(movieTitle, interaction.user.id);
 
     interaction.reply(message);
   }
