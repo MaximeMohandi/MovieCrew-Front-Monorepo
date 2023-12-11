@@ -2,6 +2,7 @@ import { PaginationItem } from "@discordx/pagination";
 import { BaseMessageOptions } from "discord.js";
 import {
   UnseenMoviesNotFound,
+  addMovie,
   getMovie,
   getMovies,
   getRandomMovie,
@@ -44,3 +45,9 @@ export const randomMovieMessage = async (): Promise<BaseMessageOptions> =>
     }
     return movie;
   });
+
+export const addMovieToWatchList = async (
+  movieTitle: string,
+  proposedBy: string,
+): Promise<BaseMessageOptions> =>
+  movieOrError(() => addMovie(movieTitle, proposedBy));
