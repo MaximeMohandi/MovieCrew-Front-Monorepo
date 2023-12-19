@@ -1,15 +1,17 @@
 import axios, { AxiosError } from "axios";
+import { getMovie } from "../../movies";
 import RateError from "../error";
 import POST_RATE_MOVIE_ENDPOINT from "./endpoints";
 
 export const rateMovie = async (
-  idMovie: number,
+  movieName: string,
   idUserRatingMovie: number,
   rating: number,
 ): Promise<number> => {
   try {
+    const { id } = await getMovie({ title: movieName });
     const response = await axios.post(POST_RATE_MOVIE_ENDPOINT, {
-      idMovie,
+      idMovie: id,
       userId: idUserRatingMovie,
       rate: rating,
     });
