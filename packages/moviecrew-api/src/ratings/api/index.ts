@@ -5,9 +5,9 @@ import POST_RATE_MOVIE_ENDPOINT from "./endpoints";
 
 export const rateMovie = async (
   movieName: string,
-  idUserRatingMovie: number,
+  idUserRatingMovie: string,
   rating: number,
-): Promise<number> => {
+): Promise<string> => {
   try {
     const { id } = await getMovie({ title: movieName });
     const response = await axios.post(POST_RATE_MOVIE_ENDPOINT, {

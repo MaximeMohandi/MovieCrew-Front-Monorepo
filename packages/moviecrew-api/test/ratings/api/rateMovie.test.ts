@@ -16,7 +16,7 @@ describe("rateMovie", () => {
         return res(ctx.status(201), ctx.json(100));
       }),
     );
-    const updatedMovieId = await rateMovie("a movie", 1, 2.0);
+    const updatedMovieId = await rateMovie("a movie", "1", 2.0);
     expect(updatedMovieId).toBe(100);
   });
 
@@ -29,7 +29,7 @@ describe("rateMovie", () => {
         return res(ctx.status(200));
       }),
     );
-    await expect(rateMovie("a movie", 1, 2.0)).rejects.toThrow(
+    await expect(rateMovie("a movie", "1", 2.0)).rejects.toThrow(
       "Error while rating",
     );
   });
@@ -48,7 +48,7 @@ describe("rateMovie", () => {
         );
       }),
     );
-    await expect(rateMovie("a movie", 1, 2.0)).rejects.toThrow(
+    await expect(rateMovie("a movie", "1", 2.0)).rejects.toThrow(
       "The rate must be between 0 and 10. Actual : 11",
     );
   });
@@ -62,7 +62,7 @@ describe("rateMovie", () => {
         return res(ctx.status(500));
       }),
     );
-    await expect(rateMovie("a movie", 1, 2.0)).rejects.toThrow(
+    await expect(rateMovie("a movie", "1", 2.0)).rejects.toThrow(
       "Error while rating",
     );
   });
