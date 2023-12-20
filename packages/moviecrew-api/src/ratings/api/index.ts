@@ -17,7 +17,7 @@ export const rateMovie = async (
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError && error.response?.status === 400)
-      throw new Error(error.response?.data.message);
+      throw new Error(error.response?.data);
     throw new RateError();
   }
 };
