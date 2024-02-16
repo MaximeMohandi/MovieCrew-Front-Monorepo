@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import RateError from "../error";
 import POST_RATE_MOVIE_ENDPOINT from "./endpoints";
 
@@ -16,8 +16,6 @@ export const rateMovie = async (
     if (response.status !== 201) throw new RateError();
     return response.data;
   } catch (error) {
-    if (error instanceof AxiosError && error.response?.status === 400)
-      throw new Error(error.response?.data);
     throw new RateError();
   }
 };

@@ -25,22 +25,6 @@ describe("rateMovie", () => {
     await expect(rateMovie(1, "1", 2.0)).rejects.toThrow("Error while rating");
   });
 
-  it("should return an error if rate is out of bound", async () => {
-    server.use(
-      rest.post(`${POST_RATE_MOVIE_ENDPOINT}`, (req, res, ctx) => {
-        return res(
-          ctx.status(400),
-          ctx.json({
-            message: "The rate must be between 0 and 10. Actual : 11",
-          }),
-        );
-      }),
-    );
-    await expect(rateMovie(1, "1", 11)).rejects.toThrow(
-      "The rate must be between 0 and 10. Actual : 11",
-    );
-  });
-
   it("should return a RateError if not successful", async () => {
     server.use(
       rest.post(`${POST_RATE_MOVIE_ENDPOINT}`, (req, res, ctx) => {
