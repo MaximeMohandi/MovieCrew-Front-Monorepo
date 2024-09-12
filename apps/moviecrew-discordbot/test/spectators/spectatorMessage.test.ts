@@ -3,8 +3,6 @@ import { EmbedBuilder } from "discord.js";
 import { spectatorMessage } from "../../src/spectators/spectatorMessage";
 import spectatorDetails from "../fixtures/spectatorDetails";
 
-
-
 test("create paginated message from spectator details", () => {
   // Arrange
   const expected = [

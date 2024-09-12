@@ -1,14 +1,7 @@
 import { PaginationItem } from "@discordx/pagination";
 import { BaseMessageOptions, EmbedBuilder } from "discord.js";
 import { Movie, MovieDetailled } from "moviecrew-api";
-
-const chunkList = <T>(list: T[]): T[][] => {
-  const chunks = [];
-  for (let i = 0; i < list.length; i += 10) {
-    chunks.push(list.slice(i, i + 10));
-  }
-  return chunks;
-};
+import { chunkList } from "../shared/listTransformations";
 
 const formatDate: (date: Date) => string = (date: Date): string =>
   date.toLocaleDateString("fr-FR", {
