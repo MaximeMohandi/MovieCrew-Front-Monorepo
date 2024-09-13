@@ -1,5 +1,5 @@
 import { PaginationItem } from "@discordx/pagination";
-import { EmbedBuilder } from "discord.js";
+import { BaseMessageOptions, EmbedBuilder } from "discord.js";
 import { Spectator } from "moviecrew-api";
 import { chunkList } from "../shared/listTransformations";
 
@@ -25,10 +25,21 @@ export const spectatorMessage = (spectator: Spectator): PaginationItem[] => {
       message.addFields({
         name: rate.ratedMovie.title,
         value: rate.rate.toFixed(2),
-        inline: true,
+        inline: false,
       });
     });
 
     return { embeds: [message] };
   });
+};
+
+export const spectatorErrorMessage = (
+  errorMessage: string,
+): BaseMessageOptions => {
+  const message = new EmbedBuilder()
+    .setTitle(`🎬 - Spectator error`)
+    .setDescription(errorMessage)
+    .setColor("#d92f1c");
+
+  return { embeds: [message] };
 };

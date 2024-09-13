@@ -17,52 +17,52 @@ test("create paginated message from spectator details", () => {
         {
           name: "The Shawshank Redemption",
           value: "5.00",
-          inline: true,
+          inline: false,
         },
         {
           name: "The Dark Knight",
           value: "5.00",
-          inline: true,
+          inline: false,
         },
         {
           name: "Forrest Gump",
           value: "5.00",
-          inline: true,
+          inline: false,
         },
         {
           name: "Pulp Fiction",
           value: "5.00",
-          inline: true,
+          inline: false,
         },
         {
           name: "Les Animaux Fantastiques",
           value: "5.00",
-          inline: true,
+          inline: false,
         },
         {
           name: "Aquaman",
           value: "5.00",
-          inline: true,
+          inline: false,
         },
         {
           name: "Deadpool 2",
           value: "5.00",
-          inline: true,
+          inline: false,
         },
         {
           name: "Legally Blonde",
           value: "5.00",
-          inline: true,
+          inline: false,
         },
         {
           name: "Inception",
           value: "5.00",
-          inline: true,
+          inline: false,
         },
         {
           name: "The Matrix",
           value: "5.00",
-          inline: true,
+          inline: false,
         },
       ),
     new EmbedBuilder()
@@ -75,7 +75,7 @@ test("create paginated message from spectator details", () => {
       .addFields({
         name: "The Lord of the Rings: The Fellowship of the Ring",
         value: "5.00",
-        inline: true,
+        inline: false,
       }),
   ];
 
