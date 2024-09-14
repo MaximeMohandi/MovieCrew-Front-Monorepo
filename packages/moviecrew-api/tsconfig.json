@@ -5,6 +5,9 @@
     "composite": true,
     "module": "ESNext",
     "target": "es6",
-    "resolveJsonModule": true
-  }
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "declarationDir": "./dist"
+  },
+  "exclude": ["dist", "node_modules", "test"],
 }

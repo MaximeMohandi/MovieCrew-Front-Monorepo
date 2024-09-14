@@ -5,10 +5,12 @@
     "target": "ESNext", // required
     "noImplicitAny": true,
     "sourceMap": true,
-    "outDir": "build",
     "emitDecoratorMetadata": false, // required
     "experimentalDecorators": true, // required
-    "importHelpers": true // required,
+    "importHelpers": true, // required,
+    "outDir": "./dist",
+    "declarationDir": "./dist"
   },
-  "references": [{ "path": "../../packages/moviecrew-api" }]
+  "references": [{ "path": "../../packages/moviecrew-api" }],
+   "exclude": ["dist", "node_modules", "test"],
 }
