@@ -11,11 +11,11 @@
     "node": ">=16.0.0"
   },
   "devDependencies": {
-    "@turbo/gen": "^1.9.7",
+    "@turbo/gen": "^@turbo/gen",
     "eslint": "^8.0.0",
     "eslint-config-custom": "*",
     "prettier": "^3.0.0",
-    "turbo": "latest"
+    "turbo": "^2.1.2"
   },
   "name": "moviecrew-front-monorepo",
   "packageManager": "yarn@1.22.19",
