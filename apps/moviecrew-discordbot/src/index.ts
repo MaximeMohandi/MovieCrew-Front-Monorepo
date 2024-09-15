@@ -2,15 +2,12 @@
 import { dirname, importx } from "@discordx/importer";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
-import "dotenv/config";
 import { authenticateApp } from "moviecrew-api";
-import { env } from "./config";
-
-if (env.NODE_ENV.trimEnd() === "development") {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-}
+import { setUpEnvironment } from "./config";
 
 console.info(">> Starting bot");
+console.info(">> Setting up environment variables");
+const env = setUpEnvironment();
 
 console.info(">> Connecting to database");
 
