@@ -1,14 +1,14 @@
 import { rest } from "msw";
 import { LoginError, loginUser } from "../../../src/users";
 import { LOGIN_USER_ENDPOINT } from "../../../src/users/api/endpoints";
-import server, { setupTest } from "../../setupApiTest";
+import server, { interceptUrl, setupTest } from "../../setupApiTest";
 
 setupTest();
 
 describe("login user", () => {
   it("should return user data", async () => {
     server.use(
-      rest.get(LOGIN_USER_ENDPOINT, (req, res, ctx) => {
+      rest.get(interceptUrl(LOGIN_USER_ENDPOINT), (req, res, ctx) => {
         return res(
           ctx.json({
             id: "1234567891011",
@@ -28,7 +28,7 @@ describe("login user", () => {
 
   it("should return error if user not found", async () => {
     server.use(
-      rest.get(LOGIN_USER_ENDPOINT, (req, res, ctx) => {
+      rest.get(interceptUrl(LOGIN_USER_ENDPOINT), (req, res, ctx) => {
         return res(
           ctx.status(404),
           ctx.json({
@@ -46,7 +46,7 @@ describe("login user", () => {
 
   it("should return generic error if something went wrong", async () => {
     server.use(
-      rest.get(LOGIN_USER_ENDPOINT, (req, res, ctx) => {
+      rest.get(interceptUrl(LOGIN_USER_ENDPOINT), (req, res, ctx) => {
         return res(ctx.status(500));
       }),
     );

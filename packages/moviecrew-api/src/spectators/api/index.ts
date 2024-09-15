@@ -5,14 +5,14 @@ import {
   SpectatorError,
 } from "../errors";
 import { Spectator } from "../shared/types";
-import { GET_SPECTATORS_DETAILS } from "./endpoints";
+import { GET_SPECTATORS_DETAILS_ENDPOINT } from "./endpoints";
 
 export const getSpectators = async (
   spectatorId: string,
 ): Promise<Spectator> => {
   try {
     const response = await axios.get<Spectator>(
-      GET_SPECTATORS_DETAILS(spectatorId),
+      GET_SPECTATORS_DETAILS_ENDPOINT(spectatorId),
     );
     return response.data;
   } catch (error) {

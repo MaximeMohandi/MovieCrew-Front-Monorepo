@@ -2,7 +2,7 @@ import { rest } from "msw";
 import { AuthenticationError, InvalidCredentialError } from "../../../src/auth";
 import { getToken } from "../../../src/auth/api";
 import { GET_TOKEN_ENDPOINT } from "../../../src/auth/api/endpoints";
-import server, { setupTest } from "../../setupApiTest";
+import server, { interceptUrl, setupTest } from "../../setupApiTest";
 
 setupTest();
 
@@ -10,7 +10,7 @@ describe("fetching token", () => {
   const jwtRegex = /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_.+/=]*$/;
   it("should return a token with an expiration date", async () => {
     server.use(
-      rest.get(GET_TOKEN_ENDPOINT, (req, res, ctx) => {
+      rest.get(interceptUrl(GET_TOKEN_ENDPOINT), (req, res, ctx) => {
         const secret = req.headers.get("ApiKey");
         const clientId = req.url.searchParams.get("clientId");
 
@@ -35,7 +35,7 @@ describe("fetching token", () => {
 
   it("should throw invalid credentials error if received a forbidden error", async () => {
     server.use(
-      rest.get(GET_TOKEN_ENDPOINT, (req, res, ctx) => {
+      rest.get(interceptUrl(GET_TOKEN_ENDPOINT), (req, res, ctx) => {
         return res(ctx.status(403));
       }),
     );
@@ -47,7 +47,7 @@ describe("fetching token", () => {
 
   it("should throw authentication failed error if received an unexpected error", async () => {
     server.use(
-      rest.get(GET_TOKEN_ENDPOINT, (req, res, ctx) => {
+      rest.get(interceptUrl(GET_TOKEN_ENDPOINT), (req, res, ctx) => {
         return res(ctx.status(500));
       }),
     );

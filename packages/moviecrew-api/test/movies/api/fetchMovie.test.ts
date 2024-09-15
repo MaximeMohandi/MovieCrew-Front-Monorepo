@@ -1,7 +1,7 @@
 import { rest } from "msw";
 import { fetchMovie } from "../../../src/movies/api";
 import { GET_MOVIE_ENDPOINT } from "../../../src/movies/api/endpoints";
-import server, { setupTest } from "../../setupApiTest";
+import server, { interceptUrl, setupTest } from "../../setupApiTest";
 import movie from "../fixtures/movie.json";
 
 setupTest();
@@ -9,7 +9,8 @@ setupTest();
 describe("fetchMovie", () => {
   it("should return movie", async () => {
     server.use(
-      rest.get(GET_MOVIE_ENDPOINT, (req, res, ctx) => {
+      rest.get(interceptUrl(GET_MOVIE_ENDPOINT), (req, res, ctx) => {
+        console.log("MSW intercepted the request", req.url.href);
         return res(ctx.json(movie));
       }),
     );
@@ -25,7 +26,7 @@ describe("fetchMovie", () => {
 
   it("should throw error when no movie found", async () => {
     server.use(
-      rest.get(GET_MOVIE_ENDPOINT, (req, res, ctx) => {
+      rest.get(interceptUrl(GET_MOVIE_ENDPOINT), (req, res, ctx) => {
         return res(ctx.status(404));
       }),
     );

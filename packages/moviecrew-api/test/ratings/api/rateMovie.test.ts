@@ -1,14 +1,14 @@
 import { rest } from "msw";
 import { rateMovie } from "../../../src/ratings";
 import POST_RATE_MOVIE_ENDPOINT from "../../../src/ratings/api/endpoints";
-import server, { setupTest } from "../../setupApiTest";
+import server, { interceptUrl, setupTest } from "../../setupApiTest";
 
 setupTest();
 
 describe("rateMovie", () => {
   it("should return the movie id if rated sucessfully", async () => {
     server.use(
-      rest.post(`${POST_RATE_MOVIE_ENDPOINT}`, (req, res, ctx) => {
+      rest.post(interceptUrl(POST_RATE_MOVIE_ENDPOINT), (req, res, ctx) => {
         return res(ctx.status(201), ctx.json(100));
       }),
     );
@@ -18,7 +18,7 @@ describe("rateMovie", () => {
 
   it("should return a RateError if the response is different from 201", async () => {
     server.use(
-      rest.post(`${POST_RATE_MOVIE_ENDPOINT}`, (req, res, ctx) => {
+      rest.post(interceptUrl(POST_RATE_MOVIE_ENDPOINT), (req, res, ctx) => {
         return res(ctx.status(200));
       }),
     );
@@ -27,7 +27,7 @@ describe("rateMovie", () => {
 
   it("should return a RateError if not successful", async () => {
     server.use(
-      rest.post(`${POST_RATE_MOVIE_ENDPOINT}`, (req, res, ctx) => {
+      rest.post(interceptUrl(POST_RATE_MOVIE_ENDPOINT), (req, res, ctx) => {
         return res(ctx.status(500));
       }),
     );

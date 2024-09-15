@@ -2,7 +2,7 @@ import { rest } from "msw";
 import { MovieFetchError } from "../../../src/movies";
 import { fetchRandomMovie } from "../../../src/movies/api";
 import { GET_RANDOM_MOVIE_ENDPOINT } from "../../../src/movies/api/endpoints";
-import server, { setupTest } from "../../setupApiTest";
+import server, { interceptUrl, setupTest } from "../../setupApiTest";
 import movies from "../fixtures/movieList.json";
 
 setupTest();
@@ -10,7 +10,7 @@ setupTest();
 describe("fetch random movie from list", () => {
   it("should return a random movie", async () => {
     server.use(
-      rest.get(GET_RANDOM_MOVIE_ENDPOINT, (req, res, ctx) => {
+      rest.get(interceptUrl(GET_RANDOM_MOVIE_ENDPOINT), (req, res, ctx) => {
         const randIndex = Math.floor(Math.random() * movies.length);
         const randMovie = movies[randIndex];
         return res(ctx.json(randMovie));
@@ -22,7 +22,7 @@ describe("fetch random movie from list", () => {
 
   it("should return null when no movie found", async () => {
     server.use(
-      rest.get(GET_RANDOM_MOVIE_ENDPOINT, (req, res, ctx) => {
+      rest.get(interceptUrl(GET_RANDOM_MOVIE_ENDPOINT), (req, res, ctx) => {
         return res(ctx.status(204));
       }),
     );

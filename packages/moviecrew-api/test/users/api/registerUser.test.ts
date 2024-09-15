@@ -1,14 +1,14 @@
 import { rest } from "msw";
 import { registerUser, RegisterUserError } from "../../../src/users";
 import { REGISTER_USER_ENDPOINT } from "../../../src/users/api/endpoints";
-import server, { setupTest } from "../../setupApiTest";
+import server, { interceptUrl, setupTest } from "../../setupApiTest";
 
 setupTest();
 
 describe("register user", () => {
   it("should return username when user is registered", async () => {
     server.use(
-      rest.post(REGISTER_USER_ENDPOINT, (req, res, ctx) => {
+      rest.post(interceptUrl(REGISTER_USER_ENDPOINT), (req, res, ctx) => {
         return res(ctx.json("John Doe"));
       }),
     );
@@ -18,7 +18,7 @@ describe("register user", () => {
 
   it("should return specific error if user exists", async () => {
     server.use(
-      rest.post(REGISTER_USER_ENDPOINT, (req, res, ctx) => {
+      rest.post(interceptUrl(REGISTER_USER_ENDPOINT), (req, res, ctx) => {
         return res(
           ctx.status(409),
           ctx.json({
@@ -36,7 +36,7 @@ describe("register user", () => {
 
   it("should return generic error if something went wrong", async () => {
     server.use(
-      rest.post(REGISTER_USER_ENDPOINT, (req, res, ctx) => {
+      rest.post(interceptUrl(REGISTER_USER_ENDPOINT), (req, res, ctx) => {
         return res(ctx.status(500));
       }),
     );
