@@ -11,7 +11,7 @@ const env = setUpEnvironment();
 
 console.info(">> Connecting to database");
 
-await authenticateApp(env.API_CLIENT_ID, env.API_KEY);
+await authenticateApp(env.API_URL, env.API_CLIENT_ID, env.API_KEY);
 
 const client = new Client({
   botId: "moviecrew-discordbot",
