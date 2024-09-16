@@ -1,7 +1,6 @@
 import "dotenv/config";
 
 type EnvironnementVariable = {
-  NODE_ENV: string;
   BOT_TOKEN: string;
   BOT_GUILD: string;
   API_URL: string;
@@ -17,19 +16,11 @@ export const setUpEnvironment = (): EnvironnementVariable => {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   }
 
-  if (
-    !BOT_TOKEN ||
-    !BOT_GUILD ||
-    !API_URL ||
-    !API_CLIENT_ID ||
-    !API_KEY ||
-    !NODE_ENV
-  ) {
+  if (!BOT_TOKEN || !BOT_GUILD || !API_URL || !API_CLIENT_ID || !API_KEY) {
     throw Error("Could not find envrionment variables");
   }
 
   return {
-    NODE_ENV,
     BOT_TOKEN,
     BOT_GUILD,
     API_URL,

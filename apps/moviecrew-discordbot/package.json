@@ -8,7 +8,8 @@
     "build": "tsc",
     "test": "jest --coverage --verbose --colors",
     "test-watch": "jest --watch",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "start": "tsx ./dist/index.js"
   },
   "dependencies": {
     "@discordx/importer": "^1.2.3",
