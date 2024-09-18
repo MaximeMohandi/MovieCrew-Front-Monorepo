@@ -12,5 +12,5 @@
     "declarationDir": "./dist"
   },
   "references": [{ "path": "../../packages/moviecrew-api" }],
-   "exclude": ["dist", "node_modules", "test"],
+   "exclude": ["dist", "node_modules"],
 }
