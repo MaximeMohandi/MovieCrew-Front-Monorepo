@@ -24,7 +24,7 @@ export const setUpEnvironment = (): EnvironnementVariable => {
     BOT_TOKEN,
     BOT_GUILD,
     API_URL,
-    API_CLIENT_ID: parseInt(API_CLIENT_ID),
+    API_CLIENT_ID: parseInt(API_CLIENT_ID, 10),
     API_KEY,
   };
 };

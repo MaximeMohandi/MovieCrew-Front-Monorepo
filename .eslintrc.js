@@ -14,4 +14,8 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: [
+    "dist/", // Exclude the dist folder
+    "**/*.d.ts", // Optionally exclude all .d.ts files if necessary
+  ],
 };

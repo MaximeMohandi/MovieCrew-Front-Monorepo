@@ -10,7 +10,6 @@ describe("fetchMovie", () => {
   it("should return movie", async () => {
     server.use(
       rest.get(interceptUrl(GET_MOVIE_ENDPOINT), (req, res, ctx) => {
-        console.log("MSW intercepted the request", req.url.href);
         return res(ctx.json(movie));
       }),
     );

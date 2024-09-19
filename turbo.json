@@ -1,25 +1,19 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [
-    "**/.env.*local"
-  ],
+  "globalDependencies": ["**/.env.*local"],
   "globalEnv": [
     "NODE_ENV",
     "BOT_TOKEN",
     "BOT_GUILD",
     "API_CLIENT_ID",
     "API_KEY",
+    "API_URL",
     "NODE_TLS_REJECT_UNAUTHORIZED"
   ],
   "tasks": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".next/**",
-        "!.next/cache/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {},
     "test": {},
