@@ -58,12 +58,19 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME  }}
           tags: |
             type=ref,event=branch
-            type=sha
 
-      - name: Build and Push Docker Image
+      - name: Debug Docker Metadata
         run: |
-          docker build -f ./apps/moviecrew-discordbot/Dockerfile . -t ${{ steps.meta.outputs.tags }} --label ${{ steps.meta.outputs.labels }} 
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME  }}:${{ steps.meta.outputs.version }}
+          echo "Tags: ${{ steps.meta.outputs.tags }}"
+          echo "Labels: ${{ steps.meta.outputs.labels }}"
+
+      - name: Build Docker Image
+        run: |
+          docker build -f ./apps/moviecrew-discordbot/Dockerfile . -t ${{ steps.meta.outputs.tags }}
+
+      - name: Push Docker Image
+        run: |
+          docker push ${{ steps.meta.outputs.tags }}
 
 env:
   REGISTRY: ghcr.io
