@@ -9,5 +9,6 @@
     "outDir": "./dist",
     "declarationDir": "./dist"
   },
+  "include": ["test/**/*.json", "src/**/*.json"],
   "exclude": ["dist", "node_modules"],
 }

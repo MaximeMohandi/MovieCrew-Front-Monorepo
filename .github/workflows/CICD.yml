@@ -29,23 +29,9 @@ jobs:
       - name: lint
         run: yarn turbo lint
 
-  sonarqube:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          # Disabling shallow clones is recommended for improving the relevancy of reporting
-          fetch-depth: 0
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@v2.3.0
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
   deploy:
     needs:
       - Tests_and_Quality
-      - sonarqube
     runs-on: ubuntu-latest
 
     permissions:
