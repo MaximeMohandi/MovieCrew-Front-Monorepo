@@ -60,14 +60,10 @@ jobs:
             type=ref,event=branch
             type=sha
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./apps/moviecrew-discordbot/Dockerfile
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      - name: Build and Push Docker Image
+        run: |
+          docker build -f ./apps/moviecrew-discordbot/Dockerfile . -t ${{ steps.meta.outputs.tags }} --label ${{ steps.meta.outputs.labels }} 
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME  }}:${{ steps.meta.outputs.version }}
 
 env:
   REGISTRY: ghcr.io
