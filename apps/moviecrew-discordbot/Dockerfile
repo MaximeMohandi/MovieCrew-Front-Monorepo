@@ -45,4 +45,4 @@ RUN adduser --system --uid 1001 discorbot
 USER discorbot
 COPY --from=installer /app .
 
-CMD yarn tsx apps/moviecrew-discordbot/dist/index.js
+CMD yarn tsx apps/moviecrew-discordbot/dist/src/index.js
