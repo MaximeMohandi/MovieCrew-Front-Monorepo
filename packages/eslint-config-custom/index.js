@@ -28,5 +28,6 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "@typescript-eslint/return-await": "off"
   },
 };
