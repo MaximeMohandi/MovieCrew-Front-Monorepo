@@ -9,6 +9,6 @@
     "outDir": "./dist",
     "declarationDir": "./dist"
   },
-  "include": ["test/**/*.json", "test/**/*.ts", "src/**/*.json", "src/**/*.ts"],
+  "include": ["test/**/*.json", "test/**/*.ts", "src/**/*.json", "src/**/*.ts", "shared/handleError.ts"],
   "exclude": ["dist", "node_modules"],
 }
