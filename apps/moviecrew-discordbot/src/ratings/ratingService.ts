@@ -1,5 +1,10 @@
 import { BaseMessageOptions, EmbedBuilder } from "discord.js";
-import { RateError, getMovie, rateMovie } from "moviecrew-api";
+import {
+  NoMovieFoundError,
+  RateError,
+  getMovie,
+  rateMovie,
+} from "moviecrew-api";
 
 const rateEmbed = (title: string, message: string) => {
   return {
@@ -31,6 +36,10 @@ export const rate = async (
   } catch (error) {
     if (error instanceof RateError) {
       return rateEmbed(`Rate Error`, error.message);
+    }
+
+    if (error instanceof NoMovieFoundError) {
+      return rateEmbed(`Rate Error`, "Movie not found");
     }
 
     throw error;

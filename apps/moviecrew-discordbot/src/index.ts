@@ -37,3 +37,8 @@ client.on("interactionCreate", (interaction) => {
 await importx(`${dirname(import.meta.url)}/**/**/*.{events,commands}.{ts,js}`);
 
 client.login(env.BOT_TOKEN);
+
+// Global error handler
+process.on("uncaughtException", (error) => {
+  console.error("Uncaught Exception:", error);
+});

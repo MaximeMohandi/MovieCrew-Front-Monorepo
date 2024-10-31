@@ -37,9 +37,7 @@ describe("when rating a movie with rateMovie command", () => {
   });
 
   it("should return an embed message with the error message when the movie is not found", async () => {
-    spyGetMovie.mockRejectedValue(
-      new moviecrewApi.RateError("Movie not found"),
-    );
+    spyGetMovie.mockRejectedValue(new moviecrewApi.NoMovieFoundError());
     const expected = new EmbedBuilder()
       .setTitle("⭐ - Rate Error")
       .setURL("https://example.com")
